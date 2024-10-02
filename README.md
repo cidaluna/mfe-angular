@@ -1,27 +1,54 @@
-# MFE Angular (em desenvolvimento)
+# Micro Frontend Angular (em desenvolvimento)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+Mono repositório contendo duas aplicações Front-end Angular 16, gerenciadas pelo Module Federation.
+O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app é a aplicação remota que expõe componentes no host-app e roda na porta 4333.
 
-## Development server
+## Como rodar o backend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4222/`. The application will automatically reload if you change any of the source files.
+Entar `cd backend` 
+Com o comando `json-server --watch db.json --port 3000` 
 
-## Code scaffolding
+## Como rodar a aplicação Angular
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Com o comando `ng serve` navegue na URL `http://localhost:4222/` e confira a aplicação rodando.
 
-## Build
+### Tecnologias
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Angular 16, 
+- Webpack,
+- Module Federation,
+- Node.js,
+- Boostrap,
+- Ícones Font Awesome,
+- JSON Server,
+- Cypress
 
-## Running unit tests
+### Documentação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Criando o mono repositório:
+`ng new mfe-angular-app --create-application=false`
 
-## Running end-to-end tests
+`cd mfe-angular-app`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Criando as aplicações micro frontends:
+`ng g application host-app --routing --no-standalone --style=scss`
 
-## Further help
+`ng g application mfe-app --routing --no-standalone --style=scss`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Instalando o Webpack:
+`npm i webpack webpack-cli --save-dev`
+
+Configurando Module Federation:
+`npm install @angular-architects/module-federation`
+
+`ng add @angular-architects/module-federation --project host-app --port 4222`
+
+`ng add @angular-architects/module-federation --project mfe-app --port 4333`
+
+Outros comandos:
+`npm cache clean --force`
+
+Dependências:
+`npm install cypress --save-dev`
+
+`npx cypress open`
