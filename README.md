@@ -10,7 +10,8 @@ Com o comando `json-server --watch db.json --port 3000`
 
 ## Como rodar a aplicação Angular
 
-Com o comando `ng serve` navegue na URL `http://localhost:4222/` e confira a aplicação rodando.
+Com o comando `ng serve host-app` navegue na URL `http://localhost:4222/` e confira a aplicação host rodando.
+Com o comando `ng serve mfe-app` navegue na URL `http://localhost:4333/` e confira a aplicação mfe rodando.
 
 ### Tecnologias
 
