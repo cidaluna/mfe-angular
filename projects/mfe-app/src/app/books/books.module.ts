@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { BooksComponent } from './books.component';
 
 
@@ -9,7 +9,8 @@ import { BooksComponent } from './books.component';
     BooksComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
+  exports: [BooksComponent]
 })
 export class BooksModule { }

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BooksComponent } from './books/books.component';
 import { BooksModule } from './books/books.module';
 
 @NgModule({
@@ -12,9 +14,11 @@ import { BooksModule } from './books/books.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule
+    BooksModule,
+    RouterModule
   ],
   providers: [],
+  exports: [BooksComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

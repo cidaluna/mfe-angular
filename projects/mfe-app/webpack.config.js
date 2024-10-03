@@ -28,6 +28,13 @@ module.exports = {
     new ModuleFederationPlugin({
         library: { type: "module" },
 
+        // For remotes
+        // name:"mfeApp",
+        // filename: "remoteEntry.js",
+        // exposes:{
+        //  './BooksModule': './src/app/books/books.module.ts'
+        //},
+
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
