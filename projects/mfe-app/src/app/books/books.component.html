@@ -1,23 +1,35 @@
 <section class="container">
   <p>MFE Application</p>
-      <p>Lista Livros</p>
-      <table sumary="Tabela lista livros" class="table ">
+
+  <div class="containerAdd">
+    <div><p>Lista Livros</p></div>
+    <div>
+      <button aria-describedby="adicionar livro" type="button" class="btn btn-success d-flex justify-content-end">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+        </svg>
+        Adicionar
+      </button>
+    </div>
+  </div>
+
+    <table sumary="Tabela lista livros" class="table ">
         <thead class="table-light">
           <tr>
             <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Publisher</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Título</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Editora</th>
+            <th scope="col">Ação</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of listAllBooks">
             <td data-label="Id" scope="row" class="table-light space-box">{{item.id}}</td>
-            <td data-label="Title">{{item.title}}</td>
-            <td data-label="Category">{{item.category}}</td>
-            <td data-label="Publisher">{{item.publisherId}}</td>
-            <td data-label="Actions">
+            <td data-label="Titulo">{{item.title}}</td>
+            <td data-label="Categoria">{{item.category}}</td>
+            <td data-label="Editora">{{item.publisherId}}</td>
+            <td data-label="Ação">
               <button aria-describedby="abrir ver detalhes" type="button" class="btn btn-primary">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -40,6 +52,5 @@
             </td>
           </tr>
         </tbody>
-      </table>
-
+    </table>
 </section>
