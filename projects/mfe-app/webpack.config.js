@@ -29,11 +29,11 @@ module.exports = {
         library: { type: "module" },
 
         // For remotes
-        // name:"mfeApp",
-        // filename: "remoteEntry.js",
-        // exposes:{
-        //  './BooksModule': './src/app/books/books.module.ts'
-        //},
+         name:"mfeApp",
+         filename: "remoteEntry.js",
+         exposes:{
+          './BooksModule': './projects/mfe-app/src/app/books/books.module.ts'
+        },
 
 
         shared: share({
