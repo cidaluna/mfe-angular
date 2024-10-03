@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'books',
     loadChildren: () => import('./../../../mfe-app/src/app/books/books.module').then(m => m.BooksModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./../../../mfe-app/src/app/login/login.module').then(m => m.LoginModule)
+  },
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 

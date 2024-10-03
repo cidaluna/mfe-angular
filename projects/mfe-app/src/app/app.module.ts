@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BooksModule } from './books/books.module';
     BrowserModule,  // ok
     AppRoutingModule,
     BooksModule,
+    LoginModule,
     CommonModule,
     RouterModule
   ],
