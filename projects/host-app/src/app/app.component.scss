@@ -1,0 +1,29 @@
+.navbar{
+  background-color: var(--color-pink1);
+  color: #fff;
+  padding: 14px 30px;
+  font-size: 1.75rem;
+}
+
+a{
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.btn-outline-light{
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.btn-outline-light:hover{
+  color: var(--color-pink1);
+}
+
+.btn{
+  margin-left: 16px;
+}
+
+.btn-lg{
+  margin-left: 2rem;
+  padding: 0.6rem 1.5rem;
+}
