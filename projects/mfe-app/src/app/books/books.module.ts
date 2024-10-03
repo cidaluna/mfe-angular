@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BooksComponent } from './books.component';
 
 
@@ -10,7 +11,14 @@ import { BooksComponent } from './books.component';
   ],
   imports: [
     CommonModule,
+    //BrowserModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: BooksComponent
+      }
+    ])
+
   ],
-  exports: [BooksComponent]
 })
 export class BooksModule { }

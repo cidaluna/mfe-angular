@@ -11,7 +11,8 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "hostApp",
-    publicPath: "auto"
+    publicPath: "auto",
+    scriptType: "text/javascript",
   },
   optimization: {
     runtimeChunk: false
@@ -26,7 +27,12 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+
+        // remotes host
+        name: "hostApp",
+        remotes: {
+          "mfeApp":"http://localhost:4333/remoteEntry.js",
+        },
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
