@@ -2,6 +2,10 @@
   margin-top: 2rem;
 }
 
+.bi{
+  color: #fff;
+}
+
 p{
   font-size: 1.4rem;
   color: var(--color-pink1);
@@ -11,6 +15,13 @@ table thead{
   background-color: var(--color-pink1);
   color: #fff;
   font-size: 1.2rem;
+}
+
+.btn-primary,
+.btn-warning,
+.btn-danger{
+  margin-right: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 
