@@ -1,0 +1,22 @@
+{
+  "apibooks": [
+    {
+      "id": 1,
+      "title": "Teste",
+      "category": "Psicologia",
+      "publisherId": 111
+    },
+    {
+      "id": 2,
+      "title": "Teste",
+      "category": "Fantasia",
+      "publisherId": 222
+    },
+    {
+      "id": 3,
+      "title": "Teste",
+      "category": "Ficção",
+      "publisherId": 333
+    }
+  ]
+}

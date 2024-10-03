@@ -1,1 +1,25 @@
-<p>Parágrafo do MFE BOOKS!</p>
+<section class="container">
+  <p>MFE Application</p>
+      <p>Lista Livros</p>
+      <table sumary="Tabela lista livros" class="table ">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Publisher</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listAllBooks">
+            <td data-label="Id" scope="row" class="table-light space-box">{{item.id}}</td>
+            <td data-label="Title">{{item.title}}</td>
+            <td data-label="Category">{{item.category}}</td>
+            <td data-label="Publisher">{{item.publisherId}}</td>
+            <td data-label="Actions">ícones aqui </td>
+          </tr>
+        </tbody>
+      </table>
+
+</section>
