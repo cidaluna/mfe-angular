@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(
     // serviço do Angular que constroi o formulário
@@ -36,12 +37,19 @@ export class LoginComponent implements OnInit {
     this.authService.authLogin(email, senha).subscribe({
       next: (value) =>{
         console.log("Login teste", value);
-        this.router.navigateByUrl('books'); // se redireciona para home ok, para books da erro
+        this.router.navigateByUrl('books'); // ok
       },
       error: (err) => {
         console.log("Login erro", err);
+        this.errorMessage = 'Credenciais inválidas. Tente novamente.';
+        this.resetForm();
       }
     })
   }
+
+  resetForm(): void {
+    this.loginForm.reset();
+  }
+
 
 }

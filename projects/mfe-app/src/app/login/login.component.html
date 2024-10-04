@@ -36,6 +36,7 @@
           (click)="login()">Fazer login</button>
         </div>
       </form>
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
   </div>
 </section>
