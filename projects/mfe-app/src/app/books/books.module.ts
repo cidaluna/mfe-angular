@@ -9,7 +9,6 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 
 
-
 @NgModule({
   declarations: [
     BooksComponent,
@@ -26,10 +25,18 @@ import { EditComponent } from './edit/edit.component';
       {
         path: '',
         component: BooksComponent
-      }
+      },
+      {
+        path: 'books/create',
+        component: CreateComponent
+      },
+      {
+        path: 'books/edit/:id',
+        component: EditComponent
+      },
     ])
 
   ],
-  providers:[BooksService]
+  providers:[BooksService],
 })
 export class BooksModule { }

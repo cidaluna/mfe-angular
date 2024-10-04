@@ -138,7 +138,7 @@
 						],
 						"styles": [
 							"projects/mfe-app/src/styles.scss"
-						],
+            ],
 						"scripts": [],
 						"extraWebpackConfig": "projects/mfe-app/webpack.config.js",
 						"commonChunk": false
