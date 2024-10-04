@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormGroup,
-  Validators
+  FormGroup
 } from '@angular/forms';
 
 @Component({
@@ -10,17 +9,24 @@ import {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  loginForm: FormGroup;
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
 
   constructor(
+    // serviço do Angular que constroi o formulário
     private fb: FormBuilder,
-  ) {
+  ) { }
+
+
+  ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(4)]],
+      email: [null],
+      senha: [null],
     });
   }
 
-  onSubmit() {}
+  login() {
+    console.log("Login teste", this.loginForm.value)
+  }
+
 }

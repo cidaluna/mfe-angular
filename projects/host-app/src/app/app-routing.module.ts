@@ -38,7 +38,14 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./../../../mfe-app/src/app/login/login.module').then(m => m.LoginModule)
   },
+  {
+    path: 'books/create',
+    loadChildren: () => import('./../../../mfe-app/src/app/books/books.module').then(m => m.BooksModule)
+
+  }
+  /*
   {path: '**', redirectTo: '/home', pathMatch: 'full'}
+  */
 ];
 
 @NgModule({
