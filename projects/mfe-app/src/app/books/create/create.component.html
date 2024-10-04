@@ -44,12 +44,14 @@
           <button class="btn btn-primary w-100 py-2"
           aria-label="salvar"
           [disabled]="!createBookForm.valid"
+          type="submit"
           (click)="save()">Salvar</button>
         </div>
 
         <div class="form-floating">
           <button class="btn btn-secondary w-100 py-2"
           aria-label="cancelar"
+          type="submit"
           (click)="cancel()">Cancelar</button>
         </div>
 

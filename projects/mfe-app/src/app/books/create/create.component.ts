@@ -9,16 +9,17 @@ import { BooksService } from '../books.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit{
-
   createBookForm!: FormGroup;
 
-  constructor(private booksService: BooksService,
+  constructor(
+    private fb: FormBuilder,
+    private booksService: BooksService,
     private router: Router,
-    private formBuilder: FormBuilder
   ){}
 
+
   ngOnInit(): void {
-      this.createBookForm = this.formBuilder.group({
+      this.createBookForm = this.fb.group({
         id: [],
         title: ['',Validators.required],
         category: ['',Validators.required],
@@ -26,12 +27,12 @@ export class CreateComponent implements OnInit{
       })
   };
 
-
   save(){
-    if(this.createBookForm){
+    if(this.createBookForm.valid){
       this.booksService.createBook(this.createBookForm.value)
       .subscribe(() => {
-        this.router.navigate(['books/create'])
+        this.router.navigate(['books']);
+        console.log('Livro criado:', this.createBookForm.value);
       }
     )}
   };
