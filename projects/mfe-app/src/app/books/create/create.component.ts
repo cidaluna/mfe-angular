@@ -10,7 +10,7 @@ import { BooksService } from '../books.service';
 })
 export class CreateComponent implements OnInit{
 
-  formData!: FormGroup;
+  createBookForm!: FormGroup;
 
   constructor(private booksService: BooksService,
     private router: Router,
@@ -18,18 +18,18 @@ export class CreateComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-      this.formData = this.formBuilder.group({
+      this.createBookForm = this.formBuilder.group({
         id: [],
         title: ['',Validators.required],
         category: ['',Validators.required],
-        publisherId: []
+        publisher: ['',Validators.required]
       })
   };
 
 
   save(){
-    if(this.formData){
-      this.booksService.createBook(this.formData.value)
+    if(this.createBookForm){
+      this.booksService.createBook(this.createBookForm.value)
       .subscribe(() => {
         this.router.navigate(['books/create'])
       }

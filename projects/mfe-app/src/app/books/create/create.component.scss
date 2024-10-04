@@ -17,3 +17,20 @@ p{
 .btn-success{
   margin-top: 1rem;
 }
+
+.form-floating{
+  margin: 0.5rem 0;
+}
+
+.msg__erro{
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+
+  span{
+    font-size: 0.8rem;
+    margin-top: 2rem;
+  }
+}

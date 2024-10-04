@@ -4,19 +4,25 @@
       "id": 1,
       "title": "Teste",
       "category": "Psicologia",
-      "publisherId": 111
+      "publisher": "Teste"
     },
     {
       "id": 2,
       "title": "Teste",
       "category": "Fantasia",
-      "publisherId": 222
+      "publisher": "Teste"
     },
     {
       "id": 3,
       "title": "Teste",
       "category": "Ficção",
-      "publisherId": 333
+      "publisher": "Teste"
+    },
+    {
+      "id": 4,
+      "title": "sasa",
+      "category": "asas",
+      "publisher": "Teste"
     }
   ]
 }
