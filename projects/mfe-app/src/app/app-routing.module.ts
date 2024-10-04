@@ -6,9 +6,10 @@ import { EditComponent } from './books/edit/edit.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  /*
   {
     path: '', redirectTo:'/books', pathMatch:'full'
-  },
+  },*/
   {
     path: 'books', component: BooksComponent
   },

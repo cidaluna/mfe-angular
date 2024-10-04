@@ -6,20 +6,35 @@
         <p>Faça login na sua conta App Books</p>
 
         <div class="form-floating">
+          <label for="email">Email</label>
           <input type="email" class="form-control" id="email" formControlName="email"
           placeholder="Seu email exemplo@appbooks.com.br"
           required>
-          <label for="email">Email</label>
+          <div class="msg__erro" *ngIf="loginForm.get('email')?.errors?.['required'] &&
+            loginForm.get('email')?.touched">
+            <p>Email obrigatório</p>
+          </div>
+          <div class="msg__erro" *ngIf="loginForm.get('email')?.errors?.['email'] &&
+            loginForm.get('email')?.touched">
+            <p>Formato de email inválido</p>
+          </div>
 
         </div>
         <div class="form-floating">
+          <label for="senha">Senha</label>
           <input type="password" class="form-control" id="senha" formControlName="senha"
           placeholder="Digite sua senha aqui" required>
-          <label for="senha">Senha</label>
-
+            <div class="msg__erro" *ngIf="loginForm.get('senha')?.errors?.['required'] &&
+              loginForm.get('senha')?.touched">
+                <p>Senha obrigatória</p>
+            </div>
         </div>
 
-        <button class="btn btn-primary w-100 py-2" (click)="login()">Fazer login</button>
+        <div class="form-floating">
+          <button class="btn btn-primary w-100 py-2"
+          [disabled]="!loginForm.valid"
+          (click)="login()">Fazer login</button>
+        </div>
       </form>
     </div>
   </div>

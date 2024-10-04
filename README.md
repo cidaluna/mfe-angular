@@ -7,6 +7,7 @@ O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app �
 
 Entar `cd backend` 
 Com o comando `json-server --watch db.json --port 3000` 
+Com o comando `json-server --watch login.json --port 4000` 
 
 ## Como rodar a aplicação Angular
 
