@@ -5,9 +5,11 @@ O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app �
 
 ## Como rodar o backend
 
-Entar `cd backend` 
-Com o comando `json-server --watch db.json --port 3000` 
-Com o comando `json-server --watch login.json --port 4000` 
+Utilize o comando `npm run backend`
+
+Será iniciado o JSON Server 
+Na porta 4000 com o comando `json-server --watch ./backend/db.json --port 4000` 
+
 
 ## Como rodar a aplicação Angular
 
@@ -17,12 +19,14 @@ Com o comando `ng serve mfe-app` navegue na URL `http://localhost:4333/` e confi
 ### Tecnologias
 
 - Angular 16, 
+- Angular Material UI,
 - Webpack,
 - Module Federation,
 - Node.js,
 - Boostrap,
 - Ícones Font Awesome,
 - JSON Server,
+- Jasmine Karma,
 - Cypress
 
 ### Documentação
@@ -33,14 +37,17 @@ Criando o mono repositório:
 `cd mfe-angular-app`
 
 Criando as aplicações micro frontends:
+
 `ng g application host-app --routing --no-standalone --style=scss`
 
 `ng g application mfe-app --routing --no-standalone --style=scss`
 
 Instalando o Webpack:
+
 `npm i webpack webpack-cli --save-dev`
 
 Configurando Module Federation:
+
 `npm install @angular-architects/module-federation`
 
 `ng add @angular-architects/module-federation --project host-app --port 4222`
@@ -48,9 +55,11 @@ Configurando Module Federation:
 `ng add @angular-architects/module-federation --project mfe-app --port 4333`
 
 Outros comandos:
+
 `npm cache clean --force`
 
 Dependências:
+
 `npm install cypress --save-dev`
 
 `npx cypress open`
