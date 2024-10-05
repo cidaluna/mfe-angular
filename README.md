@@ -5,15 +5,18 @@ O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app �
 
 ## Como rodar o backend
 
-Utilize o comando `npm run backend`
+Utilize o comando `cd backend`
 
-Será iniciado o JSON Server 
-Na porta 4000 com o comando `json-server --watch ./backend/db.json --port 4000` 
+Em seguida, o comando `json-server --watch db.json --port 4000` que irá iniciar o JSON Server
 
 
 ## Como rodar a aplicação Angular
 
 Com o comando `ng serve host-app` navegue na URL `http://localhost:4222/` e confira a aplicação host rodando.
+Screenshot - Terminal  
+
+![Iniciando Host App](./projects/host-app/src/assets/start-host-app.PNG)
+
 Com o comando `ng serve mfe-app` navegue na URL `http://localhost:4333/` e confira a aplicação mfe rodando.
 
 ### Tecnologias
@@ -63,3 +66,13 @@ Dependências:
 `npm install cypress --save-dev`
 
 `npx cypress open`
+
+### Documentação
+
+Screenshot - Tela Home com login no Host Application
+
+![Home Host App](./projects/host-app/src/assets/mfe-home-host-app.PNG)
+
+Screenshot - Tela de listar livros do MFE no Host Application
+
+![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books.PNG)
