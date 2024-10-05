@@ -28,7 +28,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
   imports: [
     CommonModule,
-    //BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -49,10 +48,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         path: '',
         component: BooksComponent
       },
-
     ])
 
   ],
   providers:[BooksService],
+  bootstrap: [BooksComponent, BookAddEditComponent]
 })
 export class BooksModule { }
