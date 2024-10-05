@@ -13,7 +13,8 @@ Em seguida, o comando `json-server --watch db.json --port 4000` que irá iniciar
 ## Como rodar a aplicação Angular
 
 Com o comando `ng serve host-app` navegue na URL `http://localhost:4222/` e confira a aplicação host rodando.
-Screenshot - Terminal  
+
+Exemplo no terminal:  
 
 ![Iniciando Host App](./projects/host-app/src/assets/start-host-app.PNG)
 
@@ -35,6 +36,7 @@ Com o comando `ng serve mfe-app` navegue na URL `http://localhost:4333/` e confi
 ### Documentação
 
 Criando o mono repositório:
+
 `ng new mfe-angular-app --create-application=false`
 
 `cd mfe-angular-app`
@@ -67,12 +69,13 @@ Dependências:
 
 `npx cypress open`
 
-### Documentação
+### Screenshot
 
-Screenshot - Tela Home com login no Host Application
+Tela Home com login no Host Application
 
 ![Home Host App](./projects/host-app/src/assets/mfe-home-host-app.PNG)
 
-Screenshot - Tela de listar livros do MFE no Host Application
+
+Tela de listar livros do MFE no Host Application
 
 ![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books.PNG)
