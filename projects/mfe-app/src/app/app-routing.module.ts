@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './books/books.component';
-import { CreateComponent } from './books/create/create.component';
-import { EditComponent } from './books/edit/edit.component';
 import { AuthGuard } from './login/auth.guard';
 import { LoginComponent } from './login/login.component';
 
@@ -13,12 +11,6 @@ const routes: Routes = [
   },*/
   {
     path: 'books', component: BooksComponent, canActivate: [AuthGuard]
-  },
-  {
-    path: 'books/create', component: CreateComponent
-  },
-  {
-    path: 'books/:id', component: EditComponent
   },
   {
     path: 'login', component: LoginComponent

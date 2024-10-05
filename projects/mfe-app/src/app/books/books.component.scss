@@ -21,6 +21,7 @@ p{
   color: var(--color-pink1);
 }
 
+/*
 table thead{
   background-color: var(--color-pink1);
   color: #fff;
@@ -38,7 +39,7 @@ table thead{
   max-width: 600px;
   margin: 1.75rem auto;
 }
-
+*/
 @media screen and (max-width: 600px) {
   .container{
     margin-top: 0.8rem;
@@ -48,6 +49,7 @@ table thead{
     margin-bottom: 0px;
   }
 
+  /*
   table {
     border: 0;
   }
@@ -100,6 +102,7 @@ table thead{
   .table-light{
     background-color: var(--color-pink1);
   }
+    */
 }
 
 

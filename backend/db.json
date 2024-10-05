@@ -1,22 +1,22 @@
 {
   "apibooks": [
     {
+      "title": "Teste 2",
+      "category": "Infantil",
+      "publisher": "Gente",
+      "id": "2"
+    },
+    {
+      "title": "Teste cida",
+      "category": "Didático",
+      "publisher": "Gente",
+      "id": "3"
+    },
+    {
       "id": 1,
-      "title": "Teste",
-      "category": "Psicologia",
-      "publisher": "Teste"
-    },
-    {
-      "id": 2,
-      "title": "Teste",
-      "category": "Fantasia",
-      "publisher": "Teste"
-    },
-    {
-      "id": 3,
-      "title": "Teste",
-      "category": "Ficção",
-      "publisher": "Teste"
+      "title": "",
+      "category": "",
+      "publisher": ""
     }
   ]
 }

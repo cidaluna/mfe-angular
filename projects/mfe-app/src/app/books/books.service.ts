@@ -28,11 +28,11 @@ export class BooksService {
     return this.httpClient.post<Books>(API, data);
   }
 
-  updateBook(data: Books):Observable<Books>{
+  updateBook(id:number, data: Books):Observable<Books>{
     // Para editar utilizamos o método PUT,
     // precisamos da URL da API e do id do livro que deseja alterar
     const url = `${API}/${data.id}`
-    return this.httpClient.put<Books>(url, data);
+    return this.httpClient.put<Books>(`url/${id}`, data);
   }
 
   deleteBook(id: number):Observable<Books>{

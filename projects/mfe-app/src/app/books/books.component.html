@@ -4,87 +4,70 @@
   <div class="containerAdd">
     <div><p>Lista Livros</p></div>
     <div>
-      <!--
-      <button routerLink="/books/create" aria-describedby="adicionar livro" type="button" class="btn btn-success d-flex justify-content-end">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-        </svg>
-        Adicionar
-      </button>
-      -->
-      <button aria-describedby="adicionar livro" type="button"
-      data-toggle="modal" data-target="#exampleModal"
-      class="btn btn-success d-flex justify-content-end">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-        </svg>
+      <button mat-raised-button class="btn btn-success d-flex justify-content-end"
+      aria-describedby="adicionar livro"
+       (click)="openAddEditBookForm()">
         Adicionar
       </button>
     </div>
   </div>
 
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-create></app-create>
-      </div>
+   <!-- Início da tabela com o Design do Angular Material -->
+   <div class="main-body">
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Poesia" #input>
+    </mat-form-field>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
 
-      </div>
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
 
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Título</th>
+          <td class="text-transform" mat-cell *matCellDef="let row"> {{row.title}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
+          <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="publisher">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Editora </th>
+          <td class="text-transform" mat-cell *matCellDef="let row"> {{row.publisher}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="openEditForm(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteBookById(row.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Quando não encontrar o dado na tabela -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">Nenhum dado encontrado "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecione pagina de livros"></mat-paginator>
     </div>
   </div>
-</div>
-<!-- Fim Modal -->
 
-    <table sumary="Tabela lista livros" class="table ">
-        <thead class="table-light">
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Título</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Editora</th>
-            <th scope="col">Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listAllBooks">
-            <td data-label="Id" scope="row" class="table-light space-box">{{item.id}}</td>
-            <td data-label="Titulo">{{item.title}}</td>
-            <td data-label="Categoria">{{item.category}}</td>
-            <td data-label="Editora">{{item.publisher}}</td>
-            <td data-label="Ação">
-              <button aria-describedby="abrir ver detalhes" type="button" class="btn btn-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
-                Ver detalhes
-              </button>
-              <button aria-describedby="editar" type="button" class="btn btn-warning">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-                </svg>
-                Editar
-              </button>
-              <button aria-describedby="excluir" type="button" class="btn btn-danger">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
-                </svg>
-                Excluir
-              </button>
-            </td>
-          </tr>
-        </tbody>
-    </table>
+   <!-- Fim da tabela-->
 </section>

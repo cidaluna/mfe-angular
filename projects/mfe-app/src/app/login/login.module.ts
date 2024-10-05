@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BooksComponent } from '../books/books.component';
-import { CreateComponent } from '../books/create/create.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login.component';
 
@@ -28,10 +27,7 @@ import { LoginComponent } from './login.component';
         path: 'books',
         component: BooksComponent
       },
-      {
-        path: 'books/create',
-        component: CreateComponent
-      },
+
     ])
 
   ],
