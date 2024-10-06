@@ -23,15 +23,21 @@ Com o comando `ng serve mfe-app` navegue na URL `http://localhost:4333/` e confi
 ### Tecnologias
 
 - Angular 16, 
-- Angular Material UI,
+- Angular Material,
 - Webpack,
 - Module Federation,
 - Node.js,
 - Boostrap,
-- Ícones Font Awesome,
+- Ícones Angular Material,
 - JSON Server,
 - Jasmine Karma,
 - Cypress
+
+### Considerações sobre o desafio
+
+Tive dificuldade ao tentar estabelecer a arquitetura proposta, especialmente na integração do Angular 17 com suas dependências, particularmente no que diz respeito ao Module Federation do Webpack. Como resultado, decidi explorar a versão 16 do Angular, onde consegui realizar a integração com sucesso. Essa abordagem alternativa me permitiu avançar no projeto e garantir a funcionalidade de carregar a modularização desejada.
+
+
 
 ### Documentação
 
@@ -76,6 +82,18 @@ Tela Home com login no Host Application
 ![Home Host App](./projects/host-app/src/assets/mfe-home-host-app.PNG)
 
 
-Tela de listar livros do MFE no Host Application
+Tela listagem de livros do MFE no Host Application
 
-![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books.PNG)
+![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books-v2.PNG)
+
+
+Formulário adicionar livro
+
+Validações do formulário
+
+Campos preenchidos
+
+Filtro e paginação para buscar livro
+
+
+
