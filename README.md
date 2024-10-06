@@ -27,19 +27,23 @@ O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app �
 
 5. **Execute a aplicação host-app**
   ```bash 
-    ng serve host-app --port 4222
+    ng serve host-app 
   ```
 
 6. **Abra um novo terminal e execute a aplicação mfe-app**
   ```bash 
-    ng serve mfe-app --port 4333
+    ng serve mfe-app 
   ```
 
 Exemplo no terminal:  
 
 ![Iniciando Host App](./projects/host-app/src/assets/start-host-app.PNG)
 
-7. **Navegue nas URLs que o comando anterior abriu**
+7. **Navegue nas URLs que o comando anterior apresentou**
+
+Host-app: http://localhost:4222
+
+Mfe-app:  http://localhost:4333
 
 
 ## Como rodar os testes Jasmine/Karma:
@@ -93,9 +97,9 @@ Tive dificuldade ao tentar estabelecer a arquitetura proposta, especialmente na 
 
 Criando o mono repositório:
 
-`ng new mfe-angular-app --create-application=false`
+`ng new mfe-angular --create-application=false`
 
-`cd mfe-angular-app`
+`cd mfe-angular`
 
 Criando as aplicações micro frontends:
 
@@ -121,11 +125,14 @@ Outros comandos:
 
 Dependências:
 
-`npm install cypress --save-dev`
+`npm i json-server`
 
-`npx cypress open`
+`npm i cypress`
 
-### Screenshot
+`npm i @angular/material` Utilizado SnackBar para notificações de erro, Dialog para abrir o modal, alguns botões e para campos de formulário do componente livro.
+
+
+## Screenshots
 
 Tela Home com login no Host Application:
 
