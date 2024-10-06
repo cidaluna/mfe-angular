@@ -1,8 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -14,16 +17,23 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent); // Cria a instância do componente
+    component = fixture.componentInstance; // Obtém a instância do componente
+    fixture.detectChanges(); // Executa a detecção de mudanças
   });
 
-  it(`should have as title 'host-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('host-app');
+  it('should create the app component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have as title "host-app"', () => {
+    expect(component.title).toEqual('host-app');
+  });
+
+  it('should change title', () => {
+    component.title = 'new-title';
+    expect(component.title).toEqual('new-title');
   });
 
 });

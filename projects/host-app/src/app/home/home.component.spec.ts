@@ -20,4 +20,12 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have the correct title', () => {
+    expect(component.title).toBe('Host Application');
+  });
+
+  it('should have the correct subtitle', () => {
+    expect(component.subtitle).toBe('Welcome!');
+  });
 });
