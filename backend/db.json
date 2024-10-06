@@ -1,22 +1,5 @@
 {
   "apibooks": [
-    {
-      "title": "Teste 2",
-      "category": "Infantil",
-      "publisher": "Gente",
-      "id": "2"
-    },
-    {
-      "title": "Teste cida",
-      "category": "Didático",
-      "publisher": "Gente",
-      "id": "3"
-    },
-    {
-      "id": 1,
-      "title": "",
-      "category": "",
-      "publisher": ""
-    }
+
   ]
 }

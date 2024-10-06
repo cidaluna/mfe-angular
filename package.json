@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@material/icon-button": "^15.0.0-canary.bc9ae6c9c.0",
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.11.3",

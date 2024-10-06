@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CoreService } from '../../core/core.service';
 import { Books } from '../books';
@@ -13,6 +13,7 @@ import { BooksService } from '../books.service';
 export class BookAddEditComponent implements OnInit{
 
   bookForm!: FormGroup;
+  isSubmitting: boolean = false; // Variável para controlar o estado do botão
 
   category: string[] = [
     'AutoAjuda',
@@ -29,9 +30,9 @@ export class BookAddEditComponent implements OnInit{
     private _coreService: CoreService
   ) {
     this.bookForm = this._fb.group({
-      title: '',
-      category: '',
-      publisher: '',
+      title: ['', [Validators.required, Validators.minLength(4)]],
+      category: ['', Validators.required],
+      publisher: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -47,6 +48,7 @@ export class BookAddEditComponent implements OnInit{
    */
   onFormSubmit() {
     if (this.bookForm.valid) {
+      this.isSubmitting = true;
       if (this.data) {
         this._bookService
           .updateBook(this.data.id, this.bookForm.value)
@@ -54,25 +56,28 @@ export class BookAddEditComponent implements OnInit{
             next: (val: any) => {
               this._coreService.openSnackBar('Livro atualizado com sucesso!');
               this._dialogRef.close(true);
+              this.isSubmitting = false;
             },
             error: (err: any) => {
               console.error(err);
+              this.isSubmitting = false;
             },
           });
       } else {
         // Criação de um novo livro
         this._bookService.getAll().subscribe((books: Books[]) => {
-          const newId = this.generateId(books);
-
+          //const newId = this.generateId(books);
           // Adiciona o novo ID aos dados do livro
-          const newBookData = { id: newId, ...this.bookForm.value };
-          this._bookService.createBook(newBookData).subscribe({
+          // const newBookData = { id: newId, ...this.bookForm.value };
+          this._bookService.createBook(this.bookForm.value).subscribe({
             next: (val: any) => {
               this._coreService.openSnackBar('Livro adicionado com sucesso');
               this._dialogRef.close(true);
+              this.isSubmitting = false;
             },
             error: (err: any) => {
               console.error(err);
+              this.isSubmitting = false;
             },
           });
         });
@@ -85,8 +90,15 @@ export class BookAddEditComponent implements OnInit{
     const ids = books
       .map(book => book.id)
       .filter((id): id is number => typeof id === 'number' && !isNaN(id)); // Filtra para garantir que seja um número
-    // Se o array estiver vazio, retorna 1, caso contrário, retorna o maior ID + 1
-    return (ids.length > 0 ? Math.max(...ids) : 0) + 1;
-  }
 
+    // Encontra o maior ID e começa a partir dele
+    let newId = (ids.length > 0 ? Math.max(...ids) : 0) + 1;
+
+    // Garante que o novo ID não seja duplicado
+    while (ids.includes(newId)) {
+      newId++;
+    }
+
+    return newId;
+  }
 }

@@ -1,3 +1,47 @@
 .custom-error {
   color: rgb(206, 117, 0);
 }
+
+.content {
+  padding: 2rem;
+  width: 500px;
+}
+
+.row {
+  display: flex;
+  padding: 0.4rem;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+p{
+  font-size: 1.4rem;
+  color: var(--color-pink1);
+}
+
+.action {
+  padding: 0px 25px 20px;
+  button {
+    flex: 1;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .content {
+    padding: 1rem;
+    width: 300px;
+  }
+  .row {
+    display: flex;
+    padding: 0.7rem;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+
+}

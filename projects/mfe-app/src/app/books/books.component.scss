@@ -21,25 +21,11 @@ p{
   color: var(--color-pink1);
 }
 
-/*
-table thead{
-  background-color: var(--color-pink1);
-  color: #fff;
-  font-size: 1.2rem;
+.custom-header{
+  color: black;
+  background-color: yellow;
 }
 
-.btn-primary,
-.btn-warning,
-.btn-danger{
-  margin-right: 1rem;
-  margin-bottom: 0.4rem;
-}
-
-.modal-dialog {
-  max-width: 600px;
-  margin: 1.75rem auto;
-}
-*/
 @media screen and (max-width: 600px) {
   .container{
     margin-top: 0.8rem;
@@ -48,61 +34,6 @@ table thead{
   p{
     margin-bottom: 0px;
   }
-
-  /*
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  table tbody{
-    margin-right: 0.6rem;
-  }
-
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-
-  table td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  table td:last-child {
-    border-bottom: 0;
-  }
-  .space-box{
-    margin-top: 1rem;
-  }
-  .table-light{
-    background-color: var(--color-pink1);
-  }
-    */
 }
 
 
