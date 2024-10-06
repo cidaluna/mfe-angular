@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { CoreService } from '../core/core.service';
 import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
 import { BooksService } from './books.service';
@@ -35,7 +36,8 @@ export class BooksComponent implements OnInit{
   constructor(
     private _dialog: MatDialog,
     private _bookService: BooksService,
-    private _coreService: CoreService
+    private _coreService: CoreService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -127,6 +129,10 @@ export class BooksComponent implements OnInit{
         }
       },
     });
+  }
+
+  openPublishers(){
+    this._router.navigate(['/publishers']);
   }
 
 }

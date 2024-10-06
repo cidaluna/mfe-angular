@@ -2,12 +2,23 @@
   <p>MFE Application</p>
 
   <div class="containerAdd">
+    <div><span>Consultar editoras</span></div>
+    <div>
+      <button mat-fab extended color="primary" class="btn btn-secondary d-flex justify-content-end"
+      (click)="openPublishers()">
+        <mat-icon>arrow_forward</mat-icon>
+        Abrir editoras
+      </button>
+    </div>
+  </div><br>
+
+  <div class="containerAdd">
     <div><p>Lista Livros</p></div>
     <div>
       <button mat-fab extended class="btn btn-primary d-flex justify-content-end"
       (click)="openAddEditBookForm()">
         <mat-icon>add</mat-icon>
-        Adicionar
+        Adicionar livro
       </button>
     </div>
   </div>
