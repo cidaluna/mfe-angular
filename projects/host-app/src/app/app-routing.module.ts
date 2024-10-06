@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./../../../mfe-app/src/app/login/login.module').then(m => m.LoginModule)
   },
+  {
+    path: 'publishers',
+    loadChildren: () => import('./../../../mfe-app/src/app/publishers/publishers.module').then(m => m.PublishersModule)
+  },
   /*
   {
     path: 'books/create',

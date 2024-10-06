@@ -24,20 +24,21 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { PublishersComponent } from './publishers/publishers.component';
+import { PublishersModule } from './publishers/publishers.module';
+import { PublishersService } from './publishers/publishers.service';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PublishersComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,  // ok
     AppRoutingModule,
     BooksModule,
     LoginModule,
+    PublishersModule, // ok
     CommonModule,
     RouterModule,
     BrowserAnimationsModule,
@@ -54,7 +55,7 @@ import { PublishersComponent } from './publishers/publishers.component';
     MatSelectModule,
     MatSnackBarModule
   ],
-  providers: [AuthService, BooksService, CoreService],
+  providers: [AuthService, BooksService, CoreService, PublishersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

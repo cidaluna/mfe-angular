@@ -35,6 +35,7 @@ module.exports = {
          exposes:{
           './BooksModule': './projects/mfe-app/src/app/books/books.module.ts',
           './LoginModule': './projects/mfe-app/src/app/login/login.module.ts',
+          './PublishersModule': './projects/mfe-app/src/app/publishers/publishers.module.ts',
         },
 
 
