@@ -41,8 +41,13 @@
     </div>
   </div>
   <div mat-dialog-actions class="action">
-    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancelar</button>
-    <button aria-label="salvar" [disabled]="!bookForm.valid || isSubmitting"
-    mat-raised-button color="primary" type="submit">{{data ? 'Atualizar': 'Salvar'}}</button>
+    <button mat-fab extended color="primary" aria-label="Cancelar"
+    type="button" [mat-dialog-close]="false">
+      Cancelar
+    </button>
+    <button mat-fab extended aria-label="salvar"
+    type="submit" [disabled]="!bookForm.valid || isSubmitting">
+      {{data ? 'Atualizar':'Salvar'}}
+    </button>
   </div>
 </form>
