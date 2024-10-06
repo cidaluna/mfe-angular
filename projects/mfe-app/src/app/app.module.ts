@@ -24,12 +24,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PublishersComponent } from './publishers/publishers.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PublishersComponent
   ],
   imports: [
     BrowserModule,  // ok
