@@ -56,6 +56,14 @@ Exemplo no terminal:
 
 ## Como rodar os testes Cypress/e2e:
 
+1. **Execute o comando**
+```bash
+  npx cypress open
+```
+
+Exemplo do Cypress na tela principal do host:
+
+![Testes com Cypress](./projects/host-app/src/assets/mfe-home-login-cypress-test.PNG)
 
 
 ### Pre-Requisitos
