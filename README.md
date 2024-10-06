@@ -86,14 +86,22 @@ Tela listagem de livros do MFE no Host Application
 
 ![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books-v2.PNG)
 
-
 Formulário adicionar livro
+
+![Form Adicionar Livro](./projects/host-app/src/assets/mfe-add-book.PNG)
 
 Validações do formulário
 
+![Form validators bloquea](./projects/host-app/src/assets/mfe-add-book-validators.PNG)
+
 Campos preenchidos
 
+![Form validators ok](./projects/host-app/src/assets/mfe-add-book-validators-ok.PNG)
+
 Filtro e paginação para buscar livro
+
+![Form filtro e paginação](./projects/host-app/src/assets/mfe-add-filter-pagination.PNG)
+
 
 
 
