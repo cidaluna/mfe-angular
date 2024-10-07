@@ -3,6 +3,8 @@
 Mono repositório contendo duas aplicações Front-end Angular 16, gerenciadas pelo Module Federation.
 O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app é a aplicação remota que expõe componentes no host-app e roda na porta 4333.
 
+O fluxo da aplicação inicia na página de boas vindas Home, permitindo o usuário clicar no link Login, inserindo as credenciais cida@app.com senha 1234, será direcionado para a listagem de livros, podendo inserir, atualizar e excluir livros. E nesta mesma listagem, existe o botão no canto superior direito ver editoras que permite a navegação para as operações de CRUD em localstorage relacionadas com as editoras.
+
 ## Como rodar as aplicações micro frontend Angular:
 
 1. **Clone o repositório:**
@@ -60,19 +62,33 @@ Mfe-app:  http://localhost:4333
 
 ## Como rodar os testes Cypress/e2e:
 
-1. **Execute o comando**
+1. **Navegue até o diretório mfe-app**
+```bash
+   cd projects/mfe-app
+```
+
+2. **No diretório do micro frontend mfe-app, execute o comando**
 ```bash
   npx cypress open
 ```
 
-Exemplo do Cypress na tela principal do host:
+3. **Será aberta uma tela, clique na opção E2E Testing**
 
-![Testes com Cypress](./projects/host-app/src/assets/mfe-home-login-cypress-test.PNG)
+4. **Clique no navegador de sua preferência e clique em Start**
+
+5. **Clique em publishers.cy.js**
+
+6. **Acompanhe o resultado dos testes Cypress na tela**
+
+
+Testes com o Cypress E2E realizando CRUD Localstorage na tela de editoras:
+
+![Testes Cypress CRUD editoras](./projects/host-app/src/assets/mfe-cypress-crud-editoras.PNG)
 
 
 ### Pre-Requisitos
-- Node.js
-- Angular CLI
+- Node.js 18
+- Angular CLI 16
 
 ### Tecnologias
 
