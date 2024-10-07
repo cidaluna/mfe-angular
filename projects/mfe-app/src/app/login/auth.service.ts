@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 
-//const API = 'http://localhost:4000/apilogin';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { TodoComponent } from './todo/todo.component';
 
 const MFE_URL = "http://localhost:4333/remoteEntry.js";
 
@@ -61,4 +60,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routeCompArr = [HomeComponent, TodoComponent];
+export const routeCompArr = [HomeComponent];
