@@ -11,28 +11,33 @@ O fluxo da aplicação inicia na página de boas vindas Home, permitindo o usuá
   ```bash
     git clone https://github.com/cidaluna/mfe-angular.git
   ```
-  
-2. **Navegue no diretório backend**
+
+2. **Navegue no diretório principal**
+```bash
+  cd mfe-angular
+```
+
+3. **Navegue no diretório backend**
   ```bash
     cd backend
   ```
 
-3. **Inicie a API Json Server**
+4. **Inicie a API Json Server**
   ```bash 
     json-server --watch db.json --port 4000
   ```
 
-4. **Abra um novo terminal no diretório do projeto e execute os comandos**
+5. **Abra um novo terminal no diretório do projeto e execute os comandos**
   ```bash 
     npm install
   ```
 
-5. **Execute a aplicação host-app**
+6. **Execute a aplicação host-app**
   ```bash 
     ng serve host-app 
   ```
 
-6. **Abra um novo terminal e execute a aplicação mfe-app**
+7. **Abra um novo terminal e execute a aplicação mfe-app**
   ```bash 
     ng serve mfe-app 
   ```
