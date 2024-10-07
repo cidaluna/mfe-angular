@@ -108,6 +108,17 @@ Testes com o Cypress E2E realizando CRUD Localstorage na tela de editoras:
 
 Tive dificuldade ao tentar estabelecer a arquitetura proposta, especialmente na integração do Angular 17 com suas dependências, particularmente no que diz respeito ao Module Federation do Webpack. Como resultado, decidi explorar a versão 16 do Angular, onde consegui realizar a integração com sucesso. Essa abordagem alternativa me permitiu avançar no projeto e garantir a funcionalidade de carregar a modularização desejada.
 
+### Sobre o Backend
+
+Cada micro frontend deve ter um service responsável pela comunicação com o backend, realizando chamadas HTTP para a API.
+
+As URLs podem ser configuradas nos arquivos environment.ts e environment.prod.ts, facilitando a troca entre ambientes. Além disso, é possível implementar criptografia, autenticação, uso de tokens, configurar proxy entre outros para proteger as requisições, estabelecer a comunicação entre as aplicações e manter a segurança dos dados compartilhados.
+
+Com os services configurados, os componentes podem realizar as operações de manipulação de dados e renderizar na tela os módulos necessários, atendendo a arquitetura de modularidade e escalabilidade, considerando as regras de negócio do produto e proporcionando uma experiência agradável ao cliente.
+
+
+Quando o backend real estiver disponível, configuramos todos os arquivos de ambiente com as URLs corretas e realizamos os testes de ponta a ponta para garantir a integração do Frontend com o Backend nos ambientes de desenvolvimento, homologação e produção.
+
 
 ### Documentação
 
