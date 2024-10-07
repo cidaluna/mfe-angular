@@ -139,7 +139,7 @@ Tela Home com login no Host Application:
 ![Home Host App](./projects/host-app/src/assets/mfe-home-host-app.PNG)
 
 
-Tela listagem de livros do MFE no Host Application:
+Tela listagem de livros CRUD feito com API JSON Server do MFE no Host Application:
 
 ![Books MFE App](./projects/host-app/src/assets/mfe-host-render-books-v2.PNG)
 
@@ -158,6 +158,11 @@ Campos preenchidos:
 Filtro e paginação para buscar livro:
 
 ![Form filtro e paginação](./projects/host-app/src/assets/mfe-add-filter-pagination.PNG)
+
+
+Tela de editoras com CRUD (Adicionar, Listar, Editar e Excluir) salvando em LocalStorage:
+
+![Editoras CRUD LocalStorage](./projects/host-app/src/assets/mfe-host-editoras-crud-localstorage.PNG)
 
 
 
