@@ -1,0 +1,48 @@
+.container{
+  margin-top: 2rem;
+}
+
+.publisher-container {
+  .custom-error {
+    color: rgb(219, 84, 0);
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    mat-form-field {
+      flex: 1; // Faz o campo de entrada ocupar o espaço restante
+      margin-right: 10px; // Espaçamento entre o campo e o checkbox
+
+      @media (max-width: 600px) {
+        margin-right: 0;
+        margin-bottom: 10px;
+        flex-basis: 100%;
+      }
+    }
+
+    mat-checkbox {
+      margin-right: 10px; // Espaçamento entre os checkboxes
+
+      @media (max-width: 600px) {
+        flex-basis: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+
+    button {
+      margin-left: 10px; // Espaçamento entre os botões
+
+      @media (max-width: 600px) {
+        flex-basis: 100%; // Faz o botão ocupar toda a largura
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+

@@ -1,1 +1,94 @@
-<p>publishers works!</p>
+<section class="container">
+<div class="publisher-container">
+  <h2>Gerenciar Editoras</h2>
+  <!-- Renderiza Formulário Adicionar/Editar -->
+  <!-- Mantem a Listagem de Editoras abaixo deste Formulário **** -->
+  <form [formGroup]="publisherForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Adicione o nome da Editora"
+        formControlName="name"
+        maxlength="30"
+      />
+      <mat-error class="custom-error" *ngIf="publisherForm.get('name')?.hasError('required') && publisherForm.get('name')?.touched">
+        O nome da editora é obrigatório
+      </mat-error>
+      <mat-error *ngIf="publisherForm.get('publisher')?.hasError('minlength') && publisherForm.get('publisher')?.touched">
+        O nome deve ter pelo menos 3 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="isActive">Ativa</mat-checkbox>
+    <mat-checkbox formControlName="isPartner">Parceira</mat-checkbox>
+
+    <button mat-fab extended color="primary" type="submit"
+    class="btn btn-secondary d-flex justify-content-end" [disabled]="!publisherForm.valid || isSubmitting">
+        <mat-icon>check</mat-icon>
+        {{ editMode ? 'Editar ' : 'Adicionar' }}
+    </button>
+
+    <button mat-fab extended color="warn" type="button" (click)="clearForm()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+  </form>
+
+  <!-- Filtro de Editoras -->
+  <mat-form-field class="filter-field">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar editoras" #inputFilter>
+  </mat-form-field>
+
+  <!-- **** Listagem de Editoras -->
+  <table mat-table [dataSource]="dataSourcePublishers" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let publisher"> {{ publisher.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef> Ativa </th>
+      <td mat-cell *matCellDef="let publisher">
+        {{ publisher.isActive ? 'Sim' : 'Não' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isPartner">
+      <th mat-header-cell *matHeaderCellDef> Parceira </th>
+      <td mat-cell *matCellDef="let publisher">
+        {{ publisher.isPartner ? 'Sim' : 'Não' }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let publisher">
+        <div class="example-button-row">
+          <div class="example-flex-container">
+            <div class="example-button-container">
+              <button mat-fab extended (click)="onEdit(publisher)">
+                <mat-icon>edit</mat-icon>
+                Editar
+              </button>&nbsp;
+              <button mat-fab extended color="primary" aria-label="Excluir" (click)="onDelete(publisher.id)">
+                <mat-icon>delete</mat-icon>
+                Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Quando não encontrar o dado na tabela -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Nenhum dado encontrado "{{inputFilter.value}}"</td>
+      </tr>
+
+    </table>
+  </div>
+</section>

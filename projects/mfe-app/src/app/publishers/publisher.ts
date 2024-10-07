@@ -1,5 +1,5 @@
 export interface IPublisher {
-  id: number;
+  id?: number | undefined;
   name: string;
   isActive: boolean;
   isPartner: boolean;
