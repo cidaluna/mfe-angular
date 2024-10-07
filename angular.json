@@ -206,7 +206,7 @@
 							"zone.js",
 							"zone.js/testing"
 						],
-						"tsConfig": "projects/mfe-app/tsconfig.spec.json",
+						"tsConfig": "projects/mfe-app/tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
 						"assets": [
 							"projects/mfe-app/src/favicon.ico",

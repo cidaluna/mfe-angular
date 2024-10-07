@@ -3,6 +3,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "ng test",
+      "type": "node",
+      "request": "launch",
+      "program": "${mfe-angular}/node_modules/@angular/cli/bin/ng",
+      "args": [
+        "test",
+        "--include",
+        "src/app/"
+      ],
+      "preLaunchTask": "npm: install",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",

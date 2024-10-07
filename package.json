@@ -1,12 +1,17 @@
 {
   "name": "mfe-angular",
   "version": "0.0.0",
+  "engines": {
+    "node": "18.20.4"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "start:host": "ng serve host-app -o",
+    "start:mfe": "ng serve mfe-app -o",
     "backend": "json-server --watch ./backend/db.json --port 4000",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
