@@ -1,4 +1,4 @@
-# Micro Frontend Angular (em desenvolvimento)
+# Micro Frontend Angular 
 
 Mono repositório contendo duas aplicações Front-end Angular 16, gerenciadas pelo Module Federation.
 O micro frontend host-app é o orquestrador que atende na porta 4222 e mfe-app é a aplicação remota que expõe componentes no host-app e roda na porta 4333.
