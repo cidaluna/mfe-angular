@@ -164,6 +164,12 @@ Tela de editoras com CRUD (Adicionar, Listar, Editar e Excluir) salvando em Loca
 
 ![Editoras CRUD LocalStorage](./projects/host-app/src/assets/mfe-host-editoras-crud-localstorage.PNG)
 
+Barra de notificações com snackBar:
+
+![Notificação para o usuário](./projects/host-app/src/assets/mfe-host-editoras-snackbar-notifications.PNG)
+
+
+
 
 
 

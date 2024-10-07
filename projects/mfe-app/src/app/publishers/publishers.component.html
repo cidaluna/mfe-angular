@@ -14,7 +14,7 @@
       <mat-error class="custom-error" *ngIf="publisherForm.get('name')?.hasError('required') && publisherForm.get('name')?.touched">
         O nome da editora é obrigatório
       </mat-error>
-      <mat-error *ngIf="publisherForm.get('publisher')?.hasError('minlength') && publisherForm.get('publisher')?.touched">
+      <mat-error *ngIf="publisherForm.get('name')?.hasError('minlength') && publisherForm.get('name')?.touched">
         O nome deve ter pelo menos 3 caracteres
       </mat-error>
     </mat-form-field>
