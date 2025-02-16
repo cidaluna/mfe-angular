@@ -19,9 +19,9 @@ export class PublishersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'isActive', 'isPartner', 'actions'];
 
   constructor(
-    private _publisherService: PublishersService,
-    private _fb: FormBuilder,
-    private _coreService: CoreService
+    private readonly _publisherService: PublishersService,
+    private readonly _fb: FormBuilder,
+    private readonly _coreService: CoreService
   ) {}
 
   ngOnInit(): void {

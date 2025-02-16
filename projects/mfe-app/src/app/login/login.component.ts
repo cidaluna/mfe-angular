@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     // serviço do Angular que constroi o formulário
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) { }
 
 

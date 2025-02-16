@@ -12,7 +12,7 @@ export class AuthService {
     { email: 'cida@app.com', senha: '1234' } // Usuário fictício para teste
   ];
 
-  constructor(private httpService: HttpClient) { }
+  constructor(private readonly httpService: HttpClient) { }
 
   authLogin(email: string, senha: string):Observable<any>{
     //return this.httpService.post<Login>(API, {email, senha});

@@ -7,7 +7,7 @@ import { IPublisher } from '../publishers/publisher';
 })
 export class PublishersService {
 
-  private localStorageKey = 'publishers';
+  private readonly localStorageKey = 'publishers';
 
   constructor() {}
 

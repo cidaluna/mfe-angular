@@ -9,7 +9,7 @@ import { Books } from './books';
 export class BooksService {
   private API = 'http://localhost:4000/apibooks';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
 
   getAll(): Observable<Books[]>{
     // Para recuperar todos os livros utilizamos o método GET

@@ -23,11 +23,11 @@ export class BookAddEditComponent implements OnInit{
   ];
 
   constructor(
-    private _fb: FormBuilder,
-    private _bookService: BooksService,
-    private _dialogRef: MatDialogRef<BookAddEditComponent>,
+    private readonly _fb: FormBuilder,
+    private readonly _bookService: BooksService,
+    private readonly _dialogRef: MatDialogRef<BookAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _coreService: CoreService
+    private readonly _coreService: CoreService
   ) {
     this.bookForm = this._fb.group({
       title: ['', [Validators.required, Validators.minLength(4)]],

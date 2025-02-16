@@ -34,10 +34,10 @@ export class BooksComponent implements OnInit{
    *  Utiliza os serviços necessários para interagir com a API e gerenciar a interface
    */
   constructor(
-    private _dialog: MatDialog,
-    private _bookService: BooksService,
-    private _coreService: CoreService,
-    private _router: Router
+    private readonly _dialog: MatDialog,
+    private readonly _bookService: BooksService,
+    private readonly _coreService: CoreService,
+    private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
