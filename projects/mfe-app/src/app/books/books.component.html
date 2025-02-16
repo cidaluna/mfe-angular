@@ -25,7 +25,7 @@
 
    <!-- Início da tabela com o Design do Angular Material -->
    <div class="main-body">
-    <mat-form-field>
+    <mat-form-field class="search-infos">
       <mat-label>Filtro</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Poesia" #input>
     </mat-form-field>
@@ -80,7 +80,19 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecione pagina de livros"></mat-paginator>
+      <mat-paginator [length]="filteredData.length"
+        [pageSizeOptions]="[3, 25, 100]"
+        (page)="onPageChange($event)"
+        aria-label="Selecione pagina de livros">
+      </mat-paginator>
+      <br>
+      <div>
+        <button mat-fab extended class="btn btn-primary d-flex justify-content-end"
+        (click)="exportInCSV()">
+          <mat-icon>check</mat-icon>
+          Exportar em CSV
+        </button>
+      </div>
     </div>
 
     <!-- Caso não haja dados filtrados -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -15,14 +15,15 @@ import { Books } from './books';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
-export class BooksComponent implements OnInit{
+export class BooksComponent implements OnInit, AfterViewInit{
 
   displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'action'];  // Colunas da tabela
-  dataSource: MatTableDataSource<Books> = new MatTableDataSource();  // MatTableDataSource tipado com Books
+  dataSource = new MatTableDataSource<Books>();  // MatTableDataSource tipado com Books
   filteredData: Books[] = [];  // Dados filtrados
   allBooks: Books[] = [];  // Todos os livros carregados da API
+  pageSize!: number;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   /**
@@ -35,10 +36,15 @@ export class BooksComponent implements OnInit{
     private readonly _bookService: BooksService,
     private readonly _coreService: CoreService,
     private readonly _router: Router
-  ) {}
+  ) { }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.pageSize; // Define o pageSize inicial
+  }
 
   ngOnInit(): void {
-    // Começo chamando a listagem de livros
     this.startListBooks();
   }
 
@@ -51,12 +57,14 @@ export class BooksComponent implements OnInit{
       next: (res: Books[]) => {  // Garantir que a resposta é um array de Books
         this.allBooks = res;  // Armazenar todos os livros
         this.filteredData = res;  // Inicializar os dados filtrados com todos os livros
-        this.dataSource = new MatTableDataSource(this.filteredData);  // Configurar o dataSource
-        this.dataSource.sort = this.sort!;
-        this.dataSource.paginator = this.paginator!;
+        this.dataSource = new MatTableDataSource<Books>(this.filteredData);  // Configurar o dataSource
+        this.updateDataSource();
+        console.log("Start List:", this.dataSource.data);
       },
       error: (err) =>{
         console.log(err);
+      },
+      complete: () => {
       }
     });
   }
@@ -93,8 +101,7 @@ export class BooksComponent implements OnInit{
       item.publisher.toLowerCase().includes(filterValue)
     );
 
-    // Atualiza o dataSource com os dados filtrados
-    this.dataSource.data = this.filteredData;
+    this.updateDataSource();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
@@ -141,6 +148,28 @@ export class BooksComponent implements OnInit{
 
   openPublishers(){
     this._router.navigate(['/publishers']);
+  }
+
+  updateDataSource(){
+    const pageSize = this.paginator.pageSize;
+    const pageIndex = this.paginator.pageIndex;
+    const paginatedBooks = this.filteredData.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
+    console.log('Page Size:',pageSize);
+    console.log('Page Index:',pageIndex);
+    console.log('paginatedBooks:',paginatedBooks);
+    this.dataSource = new MatTableDataSource(paginatedBooks);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  // Método que é chamado sempre que o usuário muda a página ou o número de itens por página
+  onPageChange(event: any) {
+    console.log("Chamou onPageChange");
+    this.startListBooks(); // Atualiza os dados conforme o novo tamanho da página
+  }
+
+  exportInCSV(){
+    console.log("Chamou export");
   }
 
 }
