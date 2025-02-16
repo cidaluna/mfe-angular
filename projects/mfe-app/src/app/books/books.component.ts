@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CoreService } from '../core/core.service';
 import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
 import { BooksService } from './books.service';
+import { Books } from './books';
 
 
 @Component({
@@ -16,14 +17,10 @@ import { BooksService } from './books.service';
 })
 export class BooksComponent implements OnInit{
 
-  displayedColumns: string[] = [
-    'id',
-    'title',
-    'category',
-    'publisher',
-    'action',
-  ];
-  dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'action'];  // Colunas da tabela
+  dataSource: MatTableDataSource<Books> = new MatTableDataSource();  // MatTableDataSource tipado com Books
+  filteredData: Books[] = [];  // Dados filtrados
+  allBooks: Books[] = [];  // Todos os livros carregados da API
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -51,10 +48,12 @@ export class BooksComponent implements OnInit{
    */
   startListBooks() {
     this._bookService.getAll().subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
+      next: (res: Books[]) => {  // Garantir que a resposta é um array de Books
+        this.allBooks = res;  // Armazenar todos os livros
+        this.filteredData = res;  // Inicializar os dados filtrados com todos os livros
+        this.dataSource = new MatTableDataSource(this.filteredData);  // Configurar o dataSource
+        this.dataSource.sort = this.sort!;
+        this.dataSource.paginator = this.paginator!;
       },
       error: (err) =>{
         console.log(err);
@@ -85,8 +84,17 @@ export class BooksComponent implements OnInit{
    *  Se existir carrega na primeira página
    */
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
+    // Filtra os livros armazenados (todos) conforme o termo de pesquisa
+    this.filteredData = this.allBooks.filter(item =>
+      item.title.toLowerCase().includes(filterValue) ||
+      item.category.toLowerCase().includes(filterValue) ||
+      item.publisher.toLowerCase().includes(filterValue)
+    );
+
+    // Atualiza o dataSource com os dados filtrados
+    this.dataSource.data = this.filteredData;
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

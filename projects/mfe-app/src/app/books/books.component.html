@@ -30,7 +30,8 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Poesia" #input>
     </mat-form-field>
 
-    <div class="table-container">
+
+    <div class="table-container" *ngIf="filteredData.length > 0; else noResults">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- ID Column -->
@@ -77,15 +78,18 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        <!-- Quando não encontrar o dado na tabela -->
-        <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">Nenhum dado encontrado "{{input.value}}"</td>
-        </tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecione pagina de livros"></mat-paginator>
     </div>
+
+    <!-- Caso não haja dados filtrados -->
+    <ng-template #noResults>
+      <div class="no-data-message">
+        Nenhum dado encontrado.
+      </div>
+    </ng-template>
+
   </div>
 
    <!-- Fim da tabela-->

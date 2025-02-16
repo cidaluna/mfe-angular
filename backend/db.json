@@ -1,5 +1,40 @@
 {
   "apibooks": [
-
+    {
+      "id": "2bdd",
+      "title": "Diário Estoico",
+      "category": "AutoAjuda",
+      "publisher": "Intrínseca"
+    },
+    {
+      "id": "0093",
+      "title": "Café com Deus Pai",
+      "category": "AutoAjuda",
+      "publisher": "Velos"
+    },
+    {
+      "id": "53c3",
+      "title": "Typescript",
+      "category": "Didático",
+      "publisher": "Gente"
+    },
+    {
+      "id": "b920",
+      "title": "Javascript",
+      "category": "Didático",
+      "publisher": "Gente"
+    },
+    {
+      "id": "9a8f",
+      "title": "Java",
+      "category": "Didático",
+      "publisher": "Gente"
+    },
+    {
+      "id": "4fd0",
+      "title": "Angular",
+      "category": "Didático",
+      "publisher": "Gente"
+    }
   ]
 }
