@@ -55,6 +55,11 @@
           <td mat-cell *matCellDef="let row"> {{row.publisher}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Publicação </th>
+          <td mat-cell *matCellDef="let row"> {{row.startDate}}</td>
+        </ng-container>
+
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>

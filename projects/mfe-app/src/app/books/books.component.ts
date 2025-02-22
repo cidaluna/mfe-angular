@@ -17,7 +17,7 @@ import { saveAs } from 'file-saver';
 })
 export class BooksComponent implements OnInit, AfterViewInit{
 
-  displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'action'];  // Colunas da tabela
+  displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'startDate', 'action'];  // Colunas da tabela
 
   dataSource = new MatTableDataSource<Books>();  // MatTableDataSource tipado com Books
   filteredData: Books[] = [];  // Dados filtrados

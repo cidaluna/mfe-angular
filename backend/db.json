@@ -4,37 +4,50 @@
       "title": "Diário Estoico 2025",
       "category": "AutoAjuda",
       "publisher": "Intrínseca",
-      "id": "2bdd"
+      "id": "2bdd",
+      "startDate": "2025-02-22"
     },
     {
       "id": "0093",
       "title": "Café com Deus Pai",
       "category": "AutoAjuda",
-      "publisher": "Velos"
+      "publisher": "Velos",
+      "startDate": "2024-05-20"
     },
     {
       "id": "53c3",
       "title": "Typescript",
       "category": "Didático",
-      "publisher": "Gente"
+      "publisher": "Gente",
+      "startDate": "2025-01-31"
     },
     {
       "id": "b920",
       "title": "Javascript",
       "category": "Didático",
-      "publisher": "Gente"
+      "publisher": "Gente",
+      "startDate": "2025-01-01"
     },
     {
       "id": "9a8f",
       "title": "Java",
       "category": "Didático",
-      "publisher": "Gente"
+      "publisher": "Gente",
+      "startDate": "2024-05-20"
     },
     {
       "id": "4fd0",
       "title": "Angular",
       "category": "Didático",
-      "publisher": "Gente"
+      "publisher": "Gente",
+      "startDate": "2024-04-18"
+    },
+    {
+      "id": "3723",
+      "title": "Carreira",
+      "category": "Didático",
+      "publisher": "Intrínseca",
+      "startDate": "2024-05-20"
     }
   ]
 }

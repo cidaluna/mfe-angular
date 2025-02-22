@@ -7,7 +7,7 @@ import { Books } from './books';
   providedIn: 'root'
 })
 export class BooksService {
-  private API = 'http://localhost:4000/apibooks';
+  private readonly API = 'http://localhost:4000/apibooks';
 
   constructor(private readonly httpClient: HttpClient) { }
 
