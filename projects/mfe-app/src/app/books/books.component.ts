@@ -8,7 +8,7 @@ import { CoreService } from '../core/core.service';
 import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
 import { BooksService } from './books.service';
 import { Books } from './books';
-
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-books',
@@ -18,6 +18,8 @@ import { Books } from './books';
 export class BooksComponent implements OnInit, AfterViewInit{
 
   displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'action'];  // Colunas da tabela
+  csvColumns: string[] = ['id', 'title', 'category', 'publisher'];  // Colunas da tabela
+
   dataSource = new MatTableDataSource<Books>();  // MatTableDataSource tipado com Books
   filteredData: Books[] = [];  // Dados filtrados
   allBooks: Books[] = [];  // Todos os livros carregados da API
@@ -97,8 +99,8 @@ export class BooksComponent implements OnInit, AfterViewInit{
     // Filtra os livros armazenados (todos) conforme o termo de pesquisa
     this.filteredData = this.allBooks.filter(item =>
       item.title.toLowerCase().includes(filterValue) ||
-      item.category.toLowerCase().includes(filterValue) ||
-      item.publisher.toLowerCase().includes(filterValue)
+      item.category.toLowerCase().includes(filterValue)
+      //item.publisher.toLowerCase().includes(filterValue)
     );
 
     this.updateDataSource();
@@ -158,8 +160,9 @@ export class BooksComponent implements OnInit, AfterViewInit{
     console.log('Page Index:',pageIndex);
     console.log('paginatedBooks:',paginatedBooks);
     this.dataSource = new MatTableDataSource(paginatedBooks);
-    this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.paginator.pageSize = this.pageSize;
   }
 
   // Método que é chamado sempre que o usuário muda a página ou o número de itens por página
@@ -168,8 +171,22 @@ export class BooksComponent implements OnInit, AfterViewInit{
     this.startListBooks(); // Atualiza os dados conforme o novo tamanho da página
   }
 
-  exportInCSV(){
-    console.log("Chamou export");
+  exportToCSV() {
+    const data = this.dataSource.data; // dataSource é a sua instância do MatTableDataSource
+
+  // Converte os dados para CSV
+  const header = this.displayedColumns.join(';');
+
+  // A função map retorna um array de strings (linhas CSV) para cada item
+  const rows = data.map(item =>
+    this.displayedColumns.map(col => item[col as keyof Books]).join(';')
+  ).join('\n');
+
+  const csvContent = header + '\n' + rows;
+
+  // Cria um blob com o conteúdo CSV e inicia o download
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  saveAs(blob, 'tabela-dados.csv');
   }
 
 }
