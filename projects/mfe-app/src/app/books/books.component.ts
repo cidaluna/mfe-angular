@@ -18,7 +18,6 @@ import { saveAs } from 'file-saver';
 export class BooksComponent implements OnInit, AfterViewInit{
 
   displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'action'];  // Colunas da tabela
-  csvColumns: string[] = ['id', 'title', 'category', 'publisher'];  // Colunas da tabela
 
   dataSource = new MatTableDataSource<Books>();  // MatTableDataSource tipado com Books
   filteredData: Books[] = [];  // Dados filtrados
@@ -172,20 +171,30 @@ export class BooksComponent implements OnInit, AfterViewInit{
   }
 
   exportToCSV() {
-    const data = this.dataSource.data; // dataSource é a sua instância do MatTableDataSource
+      // Acessa os dados da MatTableDataSource
+  const data = this.dataSource.data; // A instância de MatTableDataSource, onde estão os dados
+
+  // Filtra a coluna de "ações" se estiver em displayedColumns
+  const columnsWithoutActions = this.displayedColumns.filter(col => col !== 'action'); // 'ações' é o nome da coluna de ações
 
   // Converte os dados para CSV
-  const header = this.displayedColumns.join(';');
+  const header = columnsWithoutActions.join(';');  // Cabeçalho separado por ponto e vírgula
 
-  // A função map retorna um array de strings (linhas CSV) para cada item
+  // Mapeia os dados para gerar as linhas do CSV, excluindo a coluna de ações
   const rows = data.map(item =>
-    this.displayedColumns.map(col => item[col as keyof Books]).join(';')
-  ).join('\n');
+    columnsWithoutActions.map(col => item[col as keyof Books]).join(';')  // Junta os valores das colunas com ponto e vírgula
+  ).join('\n');  // Junta todas as linhas com quebras de linha
 
+  // Concatena o cabeçalho e as linhas para formar o conteúdo completo do CSV
   const csvContent = header + '\n' + rows;
 
-  // Cria um blob com o conteúdo CSV e inicia o download
-  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  // Adiciona o BOM para garantir a codificação correta no arquivo
+  const bom = '\uFEFF';
+
+  // Cria um Blob com o conteúdo CSV, incluindo o BOM, e especifica o tipo de arquivo como UTF-8
+  const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
+
+  // Inicia o download do arquivo CSV com o nome 'tabela-dados.csv'
   saveAs(blob, 'tabela-dados.csv');
   }
 
