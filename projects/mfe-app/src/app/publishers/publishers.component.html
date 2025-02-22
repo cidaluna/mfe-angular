@@ -35,9 +35,17 @@
   </form>
 
   <!-- Filtro de Editoras -->
-  <mat-form-field class="filter-field">
-    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar editoras" #inputFilter>
-  </mat-form-field>
+   <div class="alignItens">
+    <mat-form-field class="filter-field">
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar editoras" #inputFilter>
+    </mat-form-field>
+    <button mat-fab extended color="primary" class="btn btn-secondary d-flex justify-content-end"
+        (click)="backToBooks()">
+          <mat-icon>arrow_back</mat-icon>
+          Voltar
+    </button>
+   </div>
+
 
   <!-- **** Listagem de Editoras -->
   <table mat-table [dataSource]="dataSourcePublishers" class="mat-elevation-z8">

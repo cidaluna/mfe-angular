@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CoreService } from '../core/core.service';
 import { IPublisher } from '../publishers/publisher';
 import { PublishersService } from '../publishers/publishers.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publishers',
@@ -21,7 +22,8 @@ export class PublishersComponent implements OnInit {
   constructor(
     private readonly _publisherService: PublishersService,
     private readonly _fb: FormBuilder,
-    private readonly _coreService: CoreService
+    private readonly _coreService: CoreService,
+    private readonly _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -84,5 +86,9 @@ export class PublishersComponent implements OnInit {
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourcePublishers.filter = filterValue.trim().toLowerCase();
+  }
+
+  backToBooks(){
+    this._router.navigate(['books']);
   }
 }
