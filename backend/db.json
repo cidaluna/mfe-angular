@@ -43,11 +43,18 @@
       "startDate": "2024-04-18"
     },
     {
-      "id": "3723",
       "title": "Carreira",
       "category": "Didático",
       "publisher": "Intrínseca",
-      "startDate": "2024-05-20"
+      "startDate": "2024-05-22",
+      "id": "3723"
+    },
+    {
+      "title": "React.JS",
+      "category": "Didático",
+      "publisher": "Gente",
+      "startDate": "2025-02-23",
+      "id": "1866"
     }
   ]
 }

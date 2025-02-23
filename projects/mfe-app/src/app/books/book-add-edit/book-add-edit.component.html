@@ -39,6 +39,15 @@
         </mat-error>
       </mat-form-field>
     </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Data Publicação</mat-label>
+        <input matInput type="date" placeholder="Data Publicação" formControlName="startDate">
+        <mat-error class="custom-error" *ngIf="bookForm.get('startDate')?.hasError('required') && bookForm.get('startDate')?.touched">
+          Data obrigatória
+        </mat-error>
+      </mat-form-field>
+    </div>
   </div>
   <div mat-dialog-actions class="action">
     <button mat-fab extended color="primary" aria-label="Cancelar"

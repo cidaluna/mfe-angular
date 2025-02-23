@@ -98,8 +98,8 @@ export class BooksComponent implements OnInit, AfterViewInit{
     // Filtra os livros armazenados (todos) conforme o termo de pesquisa
     this.filteredData = this.allBooks.filter(item =>
       item.title.toLowerCase().includes(filterValue) ||
-      item.category.toLowerCase().includes(filterValue)
-      //item.publisher.toLowerCase().includes(filterValue)
+      item.category.toLowerCase().includes(filterValue) ||
+      item.publisher.toLowerCase().includes(filterValue)
     );
 
     this.updateDataSource();

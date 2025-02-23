@@ -33,6 +33,7 @@ export class BookAddEditComponent implements OnInit{
       title: ['', [Validators.required, Validators.minLength(4)]],
       category: ['', Validators.required],
       publisher: ['', [Validators.required, Validators.minLength(4)]],
+      startDate: ['', [Validators.required]],
     });
   }
 
