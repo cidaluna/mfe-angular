@@ -23,6 +23,9 @@ export class BooksComponent implements OnInit, AfterViewInit{
   filteredData: Books[] = [];  // Dados filtrados
   allBooks: Books[] = [];  // Todos os livros carregados da API
   pageSize!: number;
+  totalRecords = 0;
+  rows = 9;
+  first = 0;
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -107,6 +110,9 @@ export class BooksComponent implements OnInit, AfterViewInit{
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
+    this.totalRecords = this.filteredData.length;
+    this.dataSource.data = this.filteredData.slice(this.first, this.first + this.rows);
   }
 
 
@@ -155,7 +161,7 @@ export class BooksComponent implements OnInit, AfterViewInit{
     const pageSize = this.paginator.pageSize;
     const pageIndex = this.paginator.pageIndex;
     const paginatedBooks = this.filteredData.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
-    console.log('Page Size:',pageSize);
+    console.log('Items per page:',pageSize);
     console.log('Page Index:',pageIndex);
     console.log('paginatedBooks:',paginatedBooks);
     this.dataSource = new MatTableDataSource(paginatedBooks);

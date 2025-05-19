@@ -87,7 +87,7 @@
 
       <mat-paginator [length]="filteredData.length"
         [pageSize]="pageSize"
-        [pageSizeOptions]="[3, 5, 25, 100]"
+        [pageSizeOptions]="[5, 25, 50, 100]"
         (page)="onPageChange($event)"
         aria-label="Selecione pagina de livros">
       </mat-paginator>
@@ -97,7 +97,7 @@
         (click)="exportToCSV()">
           <mat-icon>check</mat-icon>
           Exportar em CSV
-        </button>
+        </button><br>
       </div>
     </div>
 
