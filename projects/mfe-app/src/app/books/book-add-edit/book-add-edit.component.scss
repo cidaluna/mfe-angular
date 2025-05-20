@@ -1,3 +1,5 @@
+@use '../../../styles/variables' as *;
+
 .custom-error {
   color: rgb(206, 117, 0);
 }
@@ -18,7 +20,7 @@
 
 p{
   font-size: 1.4rem;
-  color: var(--color-pink1);
+  color: $mfe-color-primary;
 }
 
 .action {

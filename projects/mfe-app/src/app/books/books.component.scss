@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .container{
   margin-top: 2rem;
 }
@@ -9,7 +11,7 @@
 }
 
 .bi{
-  color: #fff;
+  color: $mfe-color-white;
 }
 
 .endBtn, .endBtn button{
@@ -18,12 +20,12 @@
 
 p{
   font-size: 1.4rem;
-  color: var(--color-pink1);
+  color: $mfe-color-primary;
 }
 
 span{
   font-size: 1.4rem;
-  color: #3f51b5;
+  color: $mfe-color-secondary;
 }
 
 .custom-header{

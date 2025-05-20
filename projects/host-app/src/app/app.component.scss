@@ -1,22 +1,24 @@
+@use "./../styles/variables" as *;
+
 .navbar{
-  background-color: var(--color-pink1);
-  color: #fff;
+  background-color: $mfe-color-primary;
+  color: $mfe-color-white;
   padding: 14px 30px;
   font-size: 1.75rem;
 }
 
 a{
-  color: #fff;
+  color: $mfe-color-white;
   font-size: 1.6rem;
 }
 
 .btn-outline-light{
-  color: #fff;
+  color: $mfe-color-white;
   font-size: 1.6rem;
 }
 
 .btn-outline-light:hover{
-  color: var(--color-pink1);
+  color: $mfe-color-primary;
 }
 
 .btn{
