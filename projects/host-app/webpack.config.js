@@ -35,11 +35,13 @@ module.exports = {
         },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/platform-browser": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/platform-browser-dynamic": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
           ...sharedMappings.getDescriptors()
         })
 

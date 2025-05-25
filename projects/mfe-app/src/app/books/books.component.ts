@@ -2,28 +2,24 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { CoreService } from '../core/core.service';
-import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
-import { BooksService } from './books.service';
-import { Books } from './books';
+
+import { CoreService } from '@mfe-app/app/core/core.service';
+import { BookAddEditComponent } from '@mfe-app/app/books/book-add-edit/book-add-edit.component';
+import { BooksService } from '@mfe-app/app/books/books.service';
+import { Books } from '@mfe-app/app/books/books.interface';
 import { saveAs } from 'file-saver';
-// Angular Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
+import { MatSortModule, MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
@@ -40,12 +36,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule,
     MatNativeDateModule,
     MatSnackBarModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTableModule
   ],
   providers: [BooksService, CoreService],
   templateUrl: './books.component.html',

@@ -7,45 +7,64 @@
       <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
         <input matInput type="text" placeholder="Título" formControlName="title">
-        <mat-error *ngIf="bookForm.get('title')?.hasError('required') && bookForm.get('title')?.touched">
-          Título obrigatório
-        </mat-error>
-        <mat-error *ngIf="bookForm.get('title')?.hasError('minlength') && bookForm.get('title')?.touched">
-          O título deve ter pelo menos 4 caracteres
-        </mat-error>
+        @if (bookForm.get('title')?.hasError('required') && bookForm.get('title')?.touched){
+          <mat-error>
+            Título obrigatório
+          </mat-error>
+        }
+
+        @if (bookForm.get('title')?.hasError('minlength') && bookForm.get('title')?.touched) {
+          <mat-error>
+            O título deve ter pelo menos 4 caracteres
+          </mat-error>
+        }
+
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="category">
-          <mat-option *ngFor="let val of category" [value]="val">{{val}}
-          </mat-option>
+           @for (val of category; track $index) {
+            @if(val){
+            <mat-option [value]="val">{{ val }}</mat-option>
+            }
+          }
         </mat-select>
-        <mat-error *ngIf="bookForm.get('category')?.hasError('required') && bookForm.get('category')?.touched">
-          Categoria obrigatória
-        </mat-error>
+        @if (bookForm.get('category')?.hasError('required') && bookForm.get('category')?.touched) {
+          <mat-error>
+            Categoria obrigatória
+          </mat-error>
+        }
+
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Editora</mat-label>
         <input matInput type="text" placeholder="Editora" formControlName="publisher">
-        <mat-error class="custom-error" *ngIf="bookForm.get('publisher')?.hasError('required') && bookForm.get('publisher')?.touched">
-          Editora obrigatória
-        </mat-error>
-        <mat-error *ngIf="bookForm.get('publisher')?.hasError('minlength') && bookForm.get('publisher')?.touched">
-          O título deve ter pelo menos 4 caracteres
-        </mat-error>
+        @if (bookForm.get('publisher')?.hasError('required') && bookForm.get('publisher')?.touched) {
+          <mat-error class="custom-error">
+            Editora obrigatória
+          </mat-error>
+        }
+
+        @if (bookForm.get('publisher')?.hasError('minlength') && bookForm.get('publisher')?.touched) {
+          <mat-error>
+            O título deve ter pelo menos 4 caracteres
+          </mat-error>
+        }
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Data Publicação</mat-label>
         <input matInput type="date" placeholder="Data Publicação" formControlName="startDate">
-        <mat-error class="custom-error" *ngIf="bookForm.get('startDate')?.hasError('required') && bookForm.get('startDate')?.touched">
-          Data obrigatória
-        </mat-error>
+        @if (bookForm.get('startDate')?.hasError('required') && bookForm.get('startDate')?.touched) {
+          <mat-error class="custom-error">
+            Data obrigatória
+          </mat-error>
+        }
       </mat-form-field>
     </div>
   </div>

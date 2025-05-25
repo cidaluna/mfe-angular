@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Books } from './books';
+import { Books } from '@mfe-app/app/books/books.interface';
 
 @Injectable({
   providedIn: 'root'

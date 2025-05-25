@@ -34,18 +34,19 @@ module.exports = {
          filename: "remoteEntry.js",
          exposes:{
           './BooksComponent': './projects/mfe-app/src/app/books/books.component.ts',
-          './BookAddEditComponent': './projects/mfe-app/src/app/books/book-add-edit.component.ts',
           './LoginComponent': './projects/mfe-app/src/app/login/login.component.ts',
           './PublishersComponent': './projects/mfe-app/src/app/publishers/publishers.component.ts',
         },
 
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/platform-browser": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          "@angular/platform-browser-dynamic": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
           ...sharedMappings.getDescriptors()
         })
 
