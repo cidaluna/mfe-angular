@@ -1,12 +1,30 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { CoreService } from '../../core/core.service';
-import { Books } from '../books';
-import { BooksService } from '../books.service';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
+import { CoreService } from './../../core/core.service';
+import { Books } from './../books';
+import { BooksService } from './../books.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-book-add-edit',
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   templateUrl: './book-add-edit.component.html',
   styleUrls: ['./book-add-edit.component.scss']
 })

@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,9 +12,42 @@ import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
 import { BooksService } from './books.service';
 import { Books } from './books';
 import { saveAs } from 'file-saver';
+// Angular Material
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-books',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule
+  ],
+  providers: [BooksService, CoreService],
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })

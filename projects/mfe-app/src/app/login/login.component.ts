@@ -4,11 +4,21 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
