@@ -1,18 +1,40 @@
 @use "./variables" as *;
 
-*{
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+// Com border-box, a largura e altura incluem padding e border. Isso facilita o controle do layout.
+// E evita surpresas com o tamanho final dos elementos.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-body{
+html, body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
   display: flex;
   flex-direction: column;
   background-color: $mfe-color-primary-extra-light;
-  width: 100vw;
-  height: 100vh;
-  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+  min-height: 100dvh; // altura total da viewport dinâmica real
+  overflow-x: hidden; // evita scroll horizontal
 }
