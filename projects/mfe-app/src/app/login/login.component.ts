@@ -5,7 +5,6 @@ import {
   Validators
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -15,7 +14,6 @@ import { AuthService } from './auth.service';
   standalone: true,
   imports: [
     CommonModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.authService.authLogin(email, senha).subscribe({
       next: (value) =>{
         console.log("Login teste", value);
-        this.router.navigate(['/books']);
+        this.router.navigate(['books']);
       },
       error: (err) => {
         console.log("Login erro", err);

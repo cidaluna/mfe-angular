@@ -1,13 +1,15 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { CoreService } from '../core/core.service';
-import { IPublisher } from '../publishers/publisher';
-import { PublishersService } from '../publishers/publishers.service';
-import { Router } from '@angular/router';
+// MfeApp
+import { CoreService } from '@mfe-app/app/core/core.service';
+import { Publisher } from '@mfe-app/app/publishers/publisher.interface';
+import { PublishersService } from '@mfe-app/app/publishers/publishers.service';
 // Angular Material
+import { MatTableDataSource } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -43,18 +45,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   styleUrls: ['./publishers.component.scss']
 })
 export class PublishersComponent implements OnInit {
-  publishers: IPublisher[] = [];
-  dataSourcePublishers = new MatTableDataSource<IPublisher>([]);
+  publishers: Publisher[] = [];
+  dataSourcePublishers = new MatTableDataSource<Publisher>([]);
   publisherForm!: FormGroup;
   editMode = false;
   isSubmitting = false;
   displayedColumns: string[] = ['name', 'isActive', 'isPartner', 'actions'];
 
   constructor(
-    private readonly _publisherService: PublishersService,
+    private readonly _router: Router,
     private readonly _fb: FormBuilder,
-    private readonly _coreService: CoreService,
-    private readonly _router: Router
+    private readonly _publisherService: PublishersService,
+    private readonly _coreService: CoreService
   ) {}
 
   ngOnInit(): void {
@@ -82,7 +84,7 @@ export class PublishersComponent implements OnInit {
     }
 
     this.isSubmitting = true;
-    const publisherData: IPublisher = this.publisherForm.value;
+    const publisherData: Publisher = this.publisherForm.value;
 
     if (this.editMode) {
       this._publisherService.updatePublisher(publisherData);
@@ -97,7 +99,7 @@ export class PublishersComponent implements OnInit {
     this.isSubmitting = false;
   }
 
-  onEdit(publisher: IPublisher): void {
+  onEdit(publisher: Publisher): void {
     this.publisherForm.patchValue(publisher);
     this.editMode = true;
   }

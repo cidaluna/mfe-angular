@@ -1,6 +1,6 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const mf = require('@angular-architects/module-federation/webpack');
+const path = require('path');
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
@@ -10,9 +10,9 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "hostApp",
-    publicPath: "auto",
-    scriptType: "text/javascript",
+    uniqueName: 'hostApp',
+    publicPath: 'auto',
+    scriptType: 'text/javascript',
   },
   optimization: {
     runtimeChunk: false
@@ -25,23 +25,32 @@ module.exports = {
   experiments: {
     outputModule: true
   },
+  devServer: {
+    port: 4222,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    },
+    historyApiFallback: true
+  },
   plugins: [
     new ModuleFederationPlugin({
 
         // remotes host
-        name: "hostApp",
+        name: 'hostApp',
         remotes: {
-          "mfeApp":"http://localhost:4333/remoteEntry.js",
+          'mfeApp':'mfeApp@http://localhost:4333/remoteEntry.js',
         },
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/platform-browser": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          "@angular/platform-browser-dynamic": { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/platform-browser-dynamic': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
           ...sharedMappings.getDescriptors()
         })
 

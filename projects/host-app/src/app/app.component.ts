@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,13 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'host-app';
+  constructor(private _router: Router) {}
+
+  goToHome(): void {
+    this._router.navigate(['home']);
+  }
+
+  goToLogin(): void {
+    this._router.navigate(['login']);
+  }
 }

@@ -1,24 +1,38 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-
-const MFE_URL = "http://localhost:4333/remoteEntry.js";
+import { HomeComponent } from '@host-app/app/home/home.component';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  // {path: '', redirectTo: '/home', pathMatch: 'full'},
   {
-    path: 'books',
-    loadComponent: () =>
-      import('./../../../mfe-app/src/app/books/books.component').then(m => m.BooksComponent)
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'login',
+    loadChildren: () =>
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4333/remoteEntry.js',
+        remoteName: 'mfeApp',
+        exposedModule: './LoginComponent',
+      }).then(m => m.LoginComponent)
+  },
+  {
+    path: 'books',
     loadComponent: () =>
-      import('./../../../mfe-app/src/app/login/login.component').then(m => m.LoginComponent)
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4333/remoteEntry.js',
+        remoteName: 'mfeApp',
+        exposedModule: './BooksComponent',
+      }).then(m => m.BooksComponent),
   },
   {
     path: 'publishers',
     loadComponent: () =>
-      import('./../../../mfe-app/src/app/publishers/publishers.component').then(m => m.PublishersComponent)
+      loadRemoteModule({
+        remoteEntry: 'http://localhost:4333/remoteEntry.js',
+        remoteName: 'mfeApp',
+        exposedModule: './PublishersComponent',
+      }).then(m => m.PublishersComponent),
   }
 ];

@@ -186,7 +186,7 @@ export class BooksComponent implements OnInit, AfterViewInit{
   }
 
   openPublishers(){
-    this._router.navigate(['/publishers']);
+    this._router.navigate(['publishers']);
   }
 
   updateDataSource(){
