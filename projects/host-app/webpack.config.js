@@ -25,18 +25,9 @@ module.exports = {
   experiments: {
     outputModule: true
   },
-  devServer: {
-    port: 4222,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    },
-    historyApiFallback: true
-  },
   plugins: [
     new ModuleFederationPlugin({
-
+      library: { type: 'module' },
         // remotes host
         name: 'hostApp',
         remotes: {
@@ -44,13 +35,13 @@ module.exports = {
         },
 
         shared: share({
-          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
-          '@angular/platform-browser-dynamic': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: false },
+          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/animations': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           ...sharedMappings.getDescriptors()
         })
 

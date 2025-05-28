@@ -25,18 +25,8 @@ module.exports = {
   experiments: {
     outputModule: true
   },
-  devServer: {
-    port: 4333,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    },
-    historyApiFallback: true,
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
-  },
+  // Angular 18 nao suporta o @angular-builders/custom-webpack@19.0.1,
+  // Utilizar o @angular-devkit/build-angular@18.0.0 no package.json
   plugins: [
     new ModuleFederationPlugin({
         library: { type: 'module' },
@@ -45,20 +35,21 @@ module.exports = {
          name:'mfeApp',
          filename: 'remoteEntry.js',
          exposes:{
-          './BooksComponent': './projects/mfe-app/src/app/books/books.component.ts',
-          './LoginComponent': './projects/mfe-app/src/app/login/login.component.ts',
-          './PublishersComponent': './projects/mfe-app/src/app/publishers/publishers.component.ts',
+          './BooksComponent': './src/app/books/books.component.ts',
+          './BookAddEditComponent': '.src/app/books/book-add-edit/book-add-edit.component.ts',
+          './LoginComponent': './src/app/login/login.component.ts',
+          './PublishersComponent': './src/app/publishers/publishers.component.ts',
         },
 
 
         shared: share({
-          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          '@angular/platform-browser-dynamic': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: true },
+          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: true },
+          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/animations': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           ...sharedMappings.getDescriptors()
         })
 

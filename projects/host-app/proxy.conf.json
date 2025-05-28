@@ -1,8 +1,0 @@
-{
-  "/remoteEntry.js": {
-    "target": "http://localhost:4333",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  }
-}
