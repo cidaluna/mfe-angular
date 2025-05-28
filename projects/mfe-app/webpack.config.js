@@ -35,10 +35,10 @@ module.exports = {
          name:'mfeApp',
          filename: 'remoteEntry.js',
          exposes:{
-          './BooksComponent': './src/app/books/books.component.ts',
-          './BookAddEditComponent': '.src/app/books/book-add-edit/book-add-edit.component.ts',
-          './LoginComponent': './src/app/login/login.component.ts',
-          './PublishersComponent': './src/app/publishers/publishers.component.ts',
+          './BooksComponent': './projects/mfe-app/src/app/books/books.component.ts',
+          './BookAddEditComponent': './projects/mfe-app/src/app/books/book-add-edit/book-add-edit.component.ts',
+          './LoginComponent': './projects/mfe-app/src/app/login/login.component.ts',
+          './PublishersComponent': './projects/mfe-app/src/app/publishers/publishers.component.ts',
         },
 
 
