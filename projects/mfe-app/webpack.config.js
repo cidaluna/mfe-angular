@@ -45,6 +45,8 @@ module.exports = {
           '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           '@angular/router': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/material': { singleton: true, strictVersion: true },
+          '@angular/cdk': { singleton: true, strictVersion: true },
           ...sharedMappings.getDescriptors()
         })
 
