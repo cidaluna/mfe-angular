@@ -50,11 +50,25 @@
       "id": "3723"
     },
     {
-      "title": "React.JS",
+      "title": "React",
       "category": "Didático",
       "publisher": "Gente",
       "startDate": "2025-02-23",
       "id": "1866"
+    },
+    {
+      "title": "Typescript 2",
+      "category": "Didático",
+      "publisher": "Saraiva",
+      "startDate": "2025-05-28",
+      "id": "PckKjVX"
+    },
+    {
+      "title": "Typescript 3",
+      "category": "Didático",
+      "publisher": "Gente",
+      "startDate": "2025-05-28",
+      "id": "PHmaG4i"
     }
   ]
 }

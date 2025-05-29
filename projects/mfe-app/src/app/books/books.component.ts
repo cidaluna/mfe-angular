@@ -1,17 +1,49 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CoreService } from '../core/core.service';
-import { BookAddEditComponent } from './book-add-edit/book-add-edit.component';
-import { BooksService } from './books.service';
-import { Books } from './books';
+
+import { CoreService } from '@mfe-app/app/core/core.service';
+import { BookAddEditComponent } from '@mfe-app/app/books/book-add-edit/book-add-edit.component';
+import { BooksService } from '@mfe-app/app/books/books.service';
+import { Books } from '@mfe-app/app/books/books.interface';
 import { saveAs } from 'file-saver';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule, MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-books',
+  standalone: true,
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule
+  ],
+  providers: [BooksService, CoreService],
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
@@ -154,7 +186,7 @@ export class BooksComponent implements OnInit, AfterViewInit{
   }
 
   openPublishers(){
-    this._router.navigate(['/publishers']);
+    this._router.navigate(['publishers']);
   }
 
   updateDataSource(){

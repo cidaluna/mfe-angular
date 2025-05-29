@@ -1,6 +1,6 @@
 // publisher.service.ts
 import { Injectable } from '@angular/core';
-import { IPublisher } from '../publishers/publisher';
+import { Publisher } from '@mfe-app/app/publishers/publisher.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,12 @@ export class PublishersService {
 
   constructor() {}
 
-  getPublishersAll(): IPublisher[] {
+  getPublishersAll(): Publisher[] {
     const publishersData = localStorage.getItem(this.localStorageKey);
     return publishersData ? JSON.parse(publishersData) : [];
   }
 
-  addPublisher(publisher: IPublisher): void {
+  addPublisher(publisher: Publisher): void {
     console.log("Entrou service add com: ", publisher);
     const publishers = this.getPublishersAll();
     publisher.id = new Date().getTime(); // Usando timestamp para garantir ID único
@@ -24,7 +24,7 @@ export class PublishersService {
     this.updateLocalStorage(publishers);
   }
 
-  updatePublisher(updatedPublisher: IPublisher): void {
+  updatePublisher(updatedPublisher: Publisher): void {
     console.log("Entrou service editar com: ", updatedPublisher);
     const pub = this.getPublishersAll();
     const index = pub.findIndex(p => p.id === updatedPublisher.id);
@@ -40,7 +40,7 @@ export class PublishersService {
     this.updateLocalStorage(publishers);
   }
 
-  private updateLocalStorage(publishers: IPublisher[]): void {
+  private updateLocalStorage(publishers: Publisher[]): void {
     localStorage.setItem(this.localStorageKey, JSON.stringify(publishers));
   }
 }

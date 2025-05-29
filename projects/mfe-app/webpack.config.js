@@ -1,6 +1,6 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
-const path = require("path");
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const mf = require('@angular-architects/module-federation/webpack');
+const path = require('path');
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
@@ -10,9 +10,9 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: "mfeApp",
-    publicPath: "auto",
-    scriptType: "text/javascript"
+    uniqueName: 'mfeApp',
+    publicPath: 'auto',
+    scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false
@@ -22,29 +22,31 @@ module.exports = {
       ...sharedMappings.getAliases(),
     }
   },
-  experiments: {
-    outputModule: true
-  },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+        library: { type: 'var', name: 'mfeApp'},
 
         // For remotes
-         name:"mfeApp",
-         filename: "remoteEntry.js",
+         name:'mfeApp',
+         filename: 'remoteEntry.js',
          exposes:{
-          './BooksModule': './projects/mfe-app/src/app/books/books.module.ts',
-          './LoginModule': './projects/mfe-app/src/app/login/login.module.ts',
-          './PublishersModule': './projects/mfe-app/src/app/publishers/publishers.module.ts',
+          './BooksComponent': './projects/mfe-app/src/app/books/books.component.ts',
+          './BookAddEditComponent': './projects/mfe-app/src/app/books/book-add-edit/book-add-edit.component.ts',
+          './LoginComponent': './projects/mfe-app/src/app/login/login.component.ts',
+          './PublishersComponent': './projects/mfe-app/src/app/publishers/publishers.component.ts',
         },
 
 
         shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/animations': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/router': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/platform-browser': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/material': { singleton: true, strictVersion: true },
+          '@angular/cdk': { singleton: true, strictVersion: true },
           ...sharedMappings.getDescriptors()
         })
 
