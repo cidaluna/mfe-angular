@@ -22,12 +22,9 @@ module.exports = {
       ...sharedMappings.getAliases(),
     }
   },
-  experiments: {
-    outputModule: true
-  },
   plugins: [
     new ModuleFederationPlugin({
-      library: { type: 'module' },
+        library: { type: 'var', name: 'hostApp'},
         // remotes host
         name: 'hostApp',
         remotes: {

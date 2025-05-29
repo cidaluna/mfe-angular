@@ -15,7 +15,7 @@ import { AuthService } from './auth.service';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log("LoginComponent ngOnInit");
     this.loginForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       senha: [null, Validators.required],

@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '@host-app/app/home/home.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { BooksComponent } from '../../../mfe-app/src/app/books/books.component';
+import { PublishersComponent } from '../../../mfe-app/src/app/publishers/publishers.component';
 
 export const routes: Routes = [
   // {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -10,12 +12,12 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () =>
+    loadComponent: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
         remoteName: 'mfeApp',
         exposedModule: './LoginComponent',
-      }).then(m => m.LoginComponent)
+      }).then(m => m.LoginComponent),
   },
   {
     path: 'books',

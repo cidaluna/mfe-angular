@@ -22,14 +22,9 @@ module.exports = {
       ...sharedMappings.getAliases(),
     }
   },
-  experiments: {
-    outputModule: true
-  },
-  // Angular 18 nao suporta o @angular-builders/custom-webpack@19.0.1,
-  // Utilizar o @angular-devkit/build-angular@18.0.0 no package.json
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: 'module' },
+        library: { type: 'var', name: 'mfeApp'},
 
         // For remotes
          name:'mfeApp',
@@ -43,8 +38,8 @@ module.exports = {
 
 
         shared: share({
-          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: true },
-          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto', eager: true },
+          '@angular/core': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
+          '@angular/common': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           '@angular/animations': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
           '@angular/forms': { singleton: true, strictVersion: true, requiredVersion: '^18.0.0', eager: true },
