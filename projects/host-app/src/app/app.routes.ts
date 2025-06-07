@@ -4,7 +4,7 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 import { authGuard } from '@mfe-app/app/login/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
@@ -41,9 +41,5 @@ export const routes: Routes = [
         exposedModule: './PublishersComponent',
       }).then(m => m.PublishersComponent),
       data: { name: 'publishers' }
-  },
-  {
-    path: '**',
-    redirectTo: '/home',
   }
 ];
