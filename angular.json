@@ -24,6 +24,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
+            "namedChunks": true,
             "outputPath": "dist/host-app",
             "index": "projects/host-app/src/index.html",
             "main": "projects/host-app/src/main.ts",
@@ -68,7 +69,9 @@
             "development": {
               "optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true
+							"sourceMap": true,
+              "namedChunks": true,
+              "vendorChunk": false
             }
           },
           "defaultConfiguration": "production"
@@ -138,6 +141,7 @@
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
+            "namedChunks": true,
             "outputPath": "dist/mfe-app",
             "index": "projects/mfe-app/src/index.html",
             "main": "projects/mfe-app/src/main.ts",
