@@ -1,8 +1,8 @@
-<div mat-dialog-title class="custom-title">
-  <p>Form Livro</p>
-</div>
 <form [formGroup]="bookForm" (ngSubmit)="onFormSubmit()">
   <div mat-dialog-content class="content">
+    <div class="row">
+      <p>Form Livro</p>
+    </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
@@ -67,15 +67,18 @@
         }
       </mat-form-field>
     </div>
-  </div>
-  <div mat-dialog-actions class="action">
-    <button mat-fab extended color="primary" aria-label="Cancelar"
-    type="button" [mat-dialog-close]="false">
-      Cancelar
-    </button>
-    <button mat-fab extended aria-label="salvar"
-    type="submit" [disabled]="!bookForm.valid || isSubmitting">
-      {{data ? 'Atualizar':'Salvar'}}
-    </button>
+    <div class="button-row">
+      <app-button
+        text="Cancelar"
+        class="btn-half"
+        [matDialogClose]="false"
+      ></app-button>
+      <app-button
+        color="pink"
+        [text]="data ? 'Atualizar' : 'Salvar'"
+        class="btn-half"
+        [disabled]="!bookForm.valid || isSubmitting"
+      ></app-button>
+    </div>
   </div>
 </form>

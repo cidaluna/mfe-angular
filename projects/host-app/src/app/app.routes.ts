@@ -6,7 +6,8 @@ export const routes: Routes = [
   // {path: '', redirectTo: '/home', pathMatch: 'full'},
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data: { name: 'home' }
   },
   {
     path: 'login',
@@ -16,6 +17,7 @@ export const routes: Routes = [
         remoteName: 'mfeApp',
         exposedModule: './LoginComponent',
       }).then(m => m.LoginComponent),
+      data: { name: 'login' }
   },
   {
     path: 'books',
@@ -25,6 +27,7 @@ export const routes: Routes = [
         remoteName: 'mfeApp',
         exposedModule: './BooksComponent',
       }).then(m => m.BooksComponent),
+      data: { name: 'crud-books' }
   },
   {
     path: 'publishers',
@@ -34,5 +37,6 @@ export const routes: Routes = [
         remoteName: 'mfeApp',
         exposedModule: './PublishersComponent',
       }).then(m => m.PublishersComponent),
+      data: { name: 'publishers' }
   }
 ];

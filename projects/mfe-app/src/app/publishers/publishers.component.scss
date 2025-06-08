@@ -1,3 +1,5 @@
+@use './../../styles/variables' as *;
+
 .container{
   margin-top: 2rem;
 }
@@ -34,15 +36,6 @@
       }
     }
 
-    button {
-      margin-left: 10px; // Espaçamento entre os botões
-
-      @media (max-width: 600px) {
-        flex-basis: 100%; // Faz o botão ocupar toda a largura
-        margin-left: 0;
-        margin-bottom: 10px;
-      }
-    }
   }
 }
 

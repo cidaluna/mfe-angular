@@ -1,0 +1,30 @@
+@use './../../../styles/variables' as *;
+
+button.btn {
+  color: $mfe-color-white;
+
+  &.btn-blue {
+    background-color: $mfe-blue-medium;
+  }
+
+  &.btn-pink {
+    background-color: $mfe-pink-medium;
+  }
+
+  &.btn-green {
+    background-color: $mfe-green-medium;
+  }
+
+  &.btn-gray {
+    background-color: $mfe-gray-dark;
+  }
+
+  &:hover {
+    background-color: $mfe-gray-medium;
+  }
+
+  &:disabled {
+    background-color: $mfe-gray-light;
+    color: $mfe-gray-medium;
+  }
+}

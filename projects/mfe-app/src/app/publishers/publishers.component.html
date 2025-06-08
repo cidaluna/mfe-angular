@@ -21,17 +21,21 @@
 
     <mat-checkbox formControlName="isActive">Ativa</mat-checkbox>
     <mat-checkbox formControlName="isPartner">Parceira</mat-checkbox>
-
-    <button mat-fab extended color="primary" type="submit"
-    class="btn btn-secondary d-flex justify-content-end" [disabled]="!publisherForm.valid || isSubmitting">
-        <mat-icon>check</mat-icon>
-        {{ editMode ? 'Editar ' : 'Adicionar' }}
-    </button>
-
-    <button mat-fab extended color="warn" type="button" (click)="clearForm()">
-      <mat-icon>close</mat-icon>
-      Cancelar
-    </button>
+    <div class="button-row">
+      <app-button
+        [text]="editMode ? 'Salvar' : 'Adicionar'"
+        icon="check"
+        [disabled]="!publisherForm.valid || isSubmitting"
+        type="submit"
+      ></app-button>
+      &nbsp;
+      <app-button
+        color="pink"
+        text="Cancelar"
+        icon="close"
+        (clicked)="clearForm()"
+      ></app-button>
+    </div>
   </form>
 
   <!-- Filtro de Editoras -->
@@ -39,11 +43,12 @@
     <mat-form-field class="filter-field">
       <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar editoras" #inputFilter>
     </mat-form-field>
-    <button mat-fab extended color="primary" class="btn btn-secondary d-flex justify-content-end"
-        (click)="backToBooks()">
-          <mat-icon>arrow_back</mat-icon>
-          Voltar
-    </button>
+    <app-button
+        color="blue"
+        text="Voltar"
+        icon="arrow_back"
+        (clicked)="backToBooks()"
+      ></app-button>
    </div>
 
 
@@ -75,14 +80,18 @@
         <div class="example-button-row">
           <div class="example-flex-container">
             <div class="example-button-container">
-              <button mat-fab extended (click)="onEdit(publisher)">
-                <mat-icon>edit</mat-icon>
-                Editar
-              </button>&nbsp;
-              <button mat-fab extended color="primary" aria-label="Excluir" (click)="onDelete(publisher.id)">
-                <mat-icon>delete</mat-icon>
-                Excluir
-              </button>
+              <app-button
+                color="pink"
+                text="Editar"
+                icon="edit"
+                (clicked)="onEdit(publisher)"
+              ></app-button>
+              &nbsp;
+              <app-button
+                text="Excluir"
+                icon="delete"
+                (clicked)="onDelete(publisher.id)"
+              ></app-button>
             </div>
           </div>
         </div>

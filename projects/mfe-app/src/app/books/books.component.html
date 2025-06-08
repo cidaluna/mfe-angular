@@ -4,22 +4,24 @@
   <div class="containerAdd">
     <div><span>Consultar editoras</span></div>
     <div>
-      <button mat-fab extended color="primary" class="btn btn-secondary d-flex justify-content-end"
-      (click)="openPublishers()">
-        <mat-icon>arrow_forward</mat-icon>
-        Abrir editoras
-      </button>
+      <app-button
+        text="Abrir editoras"
+        icon="arrow_forward"
+        (clicked)="openPublishers()"
+      ></app-button>
     </div>
   </div><br>
 
   <div class="containerAdd">
     <div><p>Lista Livros</p></div>
     <div>
-      <button mat-fab extended class="btn btn-primary d-flex justify-content-end"
-      (click)="openAddEditBookForm()">
-        <mat-icon>add</mat-icon>
-        Adicionar livro
-      </button>
+      <app-button
+        color="pink"
+        text="Adicionar livro"
+        icon="add"
+        ariaLabel="Adicionar livro"
+        (click)="openAddEditBookForm()"
+      ></app-button>
     </div>
   </div>
 
@@ -67,14 +69,18 @@
             <div class="example-button-row">
               <div class="example-flex-container">
                 <div class="example-button-container">
-                  <button mat-fab extended (click)="openEditForm(row)">
-                    <mat-icon>edit</mat-icon>
-                    Editar
-                  </button>&nbsp;
-                  <button mat-fab extended color="primary" aria-label="Excluir" (click)="deleteBookById(row.id)">
-                    <mat-icon>delete</mat-icon>
-                    Excluir
-                  </button>
+                  <app-button
+                    color="pink"
+                    text="Editar"
+                    icon="edit"
+                    (clicked)="openEditForm(row)"
+                  ></app-button>
+                  &nbsp;
+                  <app-button
+                    text="Excluir"
+                    icon="delete"
+                    (clicked)="deleteBookById(row.id)"
+                  ></app-button>
                 </div>
               </div>
             </div>
@@ -93,12 +99,14 @@
       </mat-paginator>
       <br>
       <div>
-        <button mat-fab extended class="btn btn-primary d-flex justify-content-end"
-        (click)="exportToCSV()">
-          <mat-icon>check</mat-icon>
-          Exportar em CSV
-        </button><br>
+        <app-button
+          color="pink"
+          text="Exportar em CSV"
+          icon="check"
+          (clicked)="exportToCSV()"
+        ></app-button>
       </div>
+      <br>
     </div>
 
     <!-- Caso não haja dados filtrados -->

@@ -1,11 +1,11 @@
 {
   "apibooks": [
     {
-      "title": "Diário Estoico 2025",
+      "title": "Diário Estoico 2026",
       "category": "AutoAjuda",
       "publisher": "Intrínseca",
-      "id": "2bdd",
-      "startDate": "2025-02-22"
+      "startDate": "2025-04-18",
+      "id": "2bdd"
     },
     {
       "id": "0093",
@@ -43,13 +43,6 @@
       "startDate": "2024-04-18"
     },
     {
-      "title": "Carreira",
-      "category": "Didático",
-      "publisher": "Intrínseca",
-      "startDate": "2024-05-22",
-      "id": "3723"
-    },
-    {
       "title": "React",
       "category": "Didático",
       "publisher": "Gente",
@@ -69,6 +62,34 @@
       "publisher": "Gente",
       "startDate": "2025-05-28",
       "id": "PHmaG4i"
+    },
+    {
+      "title": "Typescript 4",
+      "category": "Didático",
+      "publisher": "Intrínseca",
+      "startDate": "2020-04-18",
+      "id": "xrhA1Of"
+    },
+    {
+      "title": "Typescript 5",
+      "category": "Didático",
+      "publisher": "Intrínseca",
+      "startDate": "2021-04-18",
+      "id": "vuNc_aR"
+    },
+    {
+      "title": "Typescript 6",
+      "category": "Didático",
+      "publisher": "Intrínseca",
+      "startDate": "2022-04-18",
+      "id": "0YUDS6z"
+    },
+    {
+      "title": "Teste Luna 123",
+      "category": "AutoAjuda",
+      "publisher": "Intrínseca",
+      "startDate": "2020-01-01",
+      "id": "qZ9iuXV"
     }
   ]
 }
