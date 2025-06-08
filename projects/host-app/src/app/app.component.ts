@@ -10,7 +10,7 @@ import { Router, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'host-app';
-  constructor(private _router: Router) {}
+  constructor(private readonly _router: Router) {}
 
   goToHome(): void {
     this._router.navigate(['home']);
