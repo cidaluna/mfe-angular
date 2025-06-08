@@ -30,6 +30,17 @@ p{
   }
 }
 
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+::ng-deep .button-row button.btn-half {
+  width: 44%;
+  max-width: 190px;
+  min-width: 160px;
+}
 
 @media screen and (max-width: 600px) {
   .content {
@@ -44,6 +55,5 @@ p{
       width: 100%;
     }
   }
-
 
 }
