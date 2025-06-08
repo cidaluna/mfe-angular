@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   encapsulation: ViewEncapsulation.None
 })
 export class ButtonComponent {
-  @Input() color!: 'blue' | 'pink' | 'green' | 'gray';
+  @Input() color: 'blue' | 'pink' | 'green' | 'gray' = 'blue';
   @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled: boolean = false;
   @Input() icon?: string;

@@ -21,11 +21,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ButtonComponent } from '../shared/button/button.component';
 @Component({
   selector: 'app-publishers',
   standalone: true,
   imports: [
     CommonModule,
+    ButtonComponent,
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,

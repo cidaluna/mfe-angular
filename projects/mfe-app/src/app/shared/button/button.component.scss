@@ -22,4 +22,9 @@ button.btn {
   &:hover {
     background-color: $mfe-gray-medium;
   }
+
+  &:disabled {
+    background-color: $mfe-gray-light;
+    color: $mfe-gray-medium;
+  }
 }
