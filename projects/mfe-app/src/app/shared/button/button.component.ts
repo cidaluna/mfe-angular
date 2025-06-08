@@ -19,6 +19,7 @@ export class ButtonComponent {
   @Input() text: string = 'Botão';
   @Input() class?: string;
   @Input() ariaLabel?: string;
+  @Input() matDialogClose?: boolean;
 
   @Output() clicked = new EventEmitter<void>();
 

@@ -21,21 +21,23 @@
 
     <mat-checkbox formControlName="isActive">Ativa</mat-checkbox>
     <mat-checkbox formControlName="isPartner">Parceira</mat-checkbox>
+    <div class="button-row">
+      <app-button
+        [text]="editMode ? 'Salvar' : 'Adicionar'"
+        class="btn-half"
+        icon="check"
+        [disabled]="!publisherForm.valid || isSubmitting"
+        type="submit"
+      ></app-button>
 
-    <app-button
-      [text]="editMode ? 'Editar' : 'Adicionar'"
-      icon="check"
-      class="custom-bg"
-      [disabled]="!publisherForm.valid || isSubmitting"
-      type="submit"
-    ></app-button>
-
-    <app-button
-      color="pink"
-      text="Cancelar"
-      icon="close"
-      (clicked)="clearForm()"
-    ></app-button>
+      <app-button
+        color="pink"
+        class="btn-half"
+        text="Cancelar"
+        icon="close"
+        (clicked)="clearForm()"
+      ></app-button>
+    </div>
   </form>
 
   <!-- Filtro de Editoras -->
@@ -80,14 +82,18 @@
         <div class="example-button-row">
           <div class="example-flex-container">
             <div class="example-button-container">
-              <button mat-fab extended (click)="onEdit(publisher)">
-                <mat-icon>edit</mat-icon>
-                Editar
-              </button>&nbsp;
-              <button mat-fab extended color="primary" aria-label="Excluir" (click)="onDelete(publisher.id)">
-                <mat-icon>delete</mat-icon>
-                Excluir
-              </button>
+              <app-button
+                color="pink"
+                text="Editar"
+                icon="edit"
+                (clicked)="onEdit(publisher)"
+              ></app-button>
+              &nbsp;
+              <app-button
+                text="Excluir"
+                icon="delete"
+                (clicked)="onDelete(publisher.id)"
+              ></app-button>
             </div>
           </div>
         </div>

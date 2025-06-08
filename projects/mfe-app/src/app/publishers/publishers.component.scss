@@ -36,7 +36,7 @@
       }
     }
 
-    button {
+    button.btn-half {  // refazer
       margin-left: 10px; // Espaçamento entre os botões
 
       @media (max-width: 600px) {
@@ -45,6 +45,7 @@
         margin-bottom: 10px;
       }
     }
+
   }
 }
 
@@ -53,3 +54,13 @@
   justify-content: space-between;
   margin: 16px 0px;
 }
+
+// button.button-row {
+//   display: flex;
+//   gap: 1rem; // Espaço entre os botões
+//   margin-top: 1.5rem;
+
+//   .btn-half {
+//     flex: 1 1 48%;
+//   }
+// }
