@@ -1,22 +1,14 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'host-app';
-  constructor(private readonly _router: Router) {}
 
-  goToHome(): void {
-    this._router.navigate(['home']);
-  }
-
-  goToLogin(): void {
-    this._router.navigate(['login']);
-  }
 }

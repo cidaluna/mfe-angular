@@ -1,0 +1,19 @@
+<header>
+  <nav class="navbar">
+    <div class="nav">
+      <span>App<strong> Books</strong></span>
+    </div>
+    <a routerLink="/">Home</a> &nbsp;
+
+    @if (isLoggedIn) {
+      <a routerLink="/books">Livros</a> &nbsp;
+      <a routerLink="/publishers">Editoras</a> &nbsp;
+    }
+
+    @if (!_auth.isLoggedIn$()) {
+      <a routerLink="/login">Login</a>
+    } @else {
+      <a (click)="logout()">Logout</a>
+    }
+  </nav>
+</header>

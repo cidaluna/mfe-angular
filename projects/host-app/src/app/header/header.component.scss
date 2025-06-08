@@ -1,0 +1,32 @@
+@use "variables" as *;
+
+.navbar{
+  background-color: $mfe-color-primary;
+  color: $mfe-color-white;
+  padding: 14px 30px;
+  font-size: 1.75rem;
+}
+
+a{
+  color: $mfe-color-white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btn-outline-light{
+  color: $mfe-color-white;
+  font-size: 1.6rem;
+}
+
+.btn-outline-light:hover{
+  color: $mfe-color-primary;
+}
+
+.btn{
+  margin-left: 16px;
+}
+
+.btn-lg{
+  margin-left: 2rem;
+  padding: 0.6rem 1.5rem;
+}
