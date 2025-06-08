@@ -1,0 +1,13 @@
+<button
+  mat-fab
+  extended
+  [attr.aria-label]="ariaLabel"
+  [disabled]="disabled"
+  [type]="type"
+  [color]="color"
+  [ngClass]="buttonClasses"
+  (click)="clicked.emit()"
+>
+  <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  {{ text }}
+</button>

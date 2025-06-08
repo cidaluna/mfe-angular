@@ -4,11 +4,12 @@
   <div class="containerAdd">
     <div><span>Consultar editoras</span></div>
     <div>
-      <button mat-fab extended color="primary" class="btn btn-secondary d-flex justify-content-end"
-      (click)="openPublishers()">
-        <mat-icon>arrow_forward</mat-icon>
-        Abrir editoras
-      </button>
+      <app-button
+        color="blue"
+        text="Abrir editoras"
+        icon="arrow_forward"
+        (clicked)="openPublishers()"
+      ></app-button>
     </div>
   </div><br>
 
@@ -20,6 +21,14 @@
         <mat-icon>add</mat-icon>
         Adicionar livro
       </button>
+      <br>
+      <app-button
+        color="pink"
+        text="Adicionar livro"
+        icon="add"
+        ariaLabel="Adicionar livro"
+        (click)="openAddEditBookForm()"
+      ></app-button>
     </div>
   </div>
 
