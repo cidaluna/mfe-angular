@@ -1,15 +1,10 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './login/auth.guard';
+import { authGuard } from './login/auth.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    redirectTo:'/login',
-    pathMatch:'full'
-  },
-  {
     path: 'books',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./books/books.component').then(m => m.BooksComponent),
   },
@@ -20,11 +15,8 @@ export const routes: Routes = [
   },
   {
     path: 'publishers',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./publishers/publishers.component').then(m => m.PublishersComponent),
-  },
-  {
-    path: '**',
-    redirectTo: '/login',
   }
 ];

@@ -34,6 +34,7 @@ module.exports = {
           './BookAddEditComponent': './projects/mfe-app/src/app/books/book-add-edit/book-add-edit.component.ts',
           './LoginComponent': './projects/mfe-app/src/app/login/login.component.ts',
           './PublishersComponent': './projects/mfe-app/src/app/publishers/publishers.component.ts',
+          './AuthGuard': './projects/mfe-app/src/app/login/auth.guard.ts'
         },
 
 
