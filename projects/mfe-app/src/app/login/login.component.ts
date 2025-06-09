@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,7 +7,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '@host-app/app/services/auth.service';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'app-login',
@@ -22,19 +23,18 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  errorMessage: string | null = null;
 
   constructor(
     // serviço do Angular que constroi o formulário
-    private readonly fb: FormBuilder,
-    private readonly authService: AuthService,
-    private readonly router: Router
+    private readonly _fb: FormBuilder,
+    private readonly _auth: AuthService,
+    private readonly _snackBar: CoreService,
+    private readonly _router: Router
   ) { }
 
 
   ngOnInit(): void {
-    console.log("LoginComponent ngOnInit");
-    this.loginForm = this.fb.group({
+    this.loginForm = this._fb.group({
       email: [null, [Validators.required, Validators.email]],
       senha: [null, Validators.required],
     });
@@ -43,22 +43,19 @@ export class LoginComponent implements OnInit {
   login() {
     const email = this.loginForm.value.email;
     const senha = this.loginForm.value.senha;
-    this.authService.authLogin(email, senha).subscribe({
-      next: (value) =>{
-        console.log("Login teste", value);
-        this.router.navigate(['books']);
-      },
-      error: (err) => {
-        console.log("Login erro", err);
-        this.errorMessage = 'Credenciais inválidas. Tente novamente.';
-        this.resetForm();
-      }
-    })
+
+    if (email === 'cida@app.com' && senha === '1234') {
+      const fakeToken = 'jwt-token-fake';
+      this._auth.login(fakeToken);
+      this._snackBar.openSnackBar('Login realizado com sucesso!', 'OK');
+      this._router.navigate(['/books']);
+    } else {
+      this._snackBar.openSnackBar('Credenciais inválidas. Tente novamente!', 'Fechar');
+      this.resetForm();
+    }
   }
 
   resetForm(): void {
     this.loginForm.reset();
   }
-
-
 }

@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from '@host-app/app/home/home.component';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { authGuard } from '@mfe-app/app/login/auth.guard';
 
 export const routes: Routes = [
-  // {path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'home',
     component: HomeComponent,
@@ -21,16 +22,18 @@ export const routes: Routes = [
   },
   {
     path: 'books',
+    canActivate: [authGuard],
     loadComponent: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
         remoteName: 'mfeApp',
         exposedModule: './BooksComponent',
       }).then(m => m.BooksComponent),
-      data: { name: 'crud-books' }
+      data: { name: 'books' }
   },
   {
     path: 'publishers',
+    canActivate: [authGuard],
     loadComponent: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
@@ -38,5 +41,9 @@ export const routes: Routes = [
         exposedModule: './PublishersComponent',
       }).then(m => m.PublishersComponent),
       data: { name: 'publishers' }
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
   }
 ];

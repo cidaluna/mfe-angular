@@ -2,7 +2,7 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './../src/app/app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -19,15 +19,18 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BooksService } from './app/books/books.service';
-import { AuthService } from './app/login/auth.service';
+import { AuthService } from '@host-app/app/services/auth.service';
 import { CoreService } from './app/core/core.service';
 import { PublishersService } from './app/publishers/publishers.service';
+import { authInterceptor } from './app/login/auth.interceptor';
 
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([authInterceptor])
+    ),
     provideAnimations(),
     importProvidersFrom(
       BrowserAnimationsModule,
