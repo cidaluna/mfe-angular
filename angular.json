@@ -21,6 +21,15 @@
       "sourceRoot": "projects/host-app/src",
       "prefix": "app",
       "architect": {
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/host-app/src/**/*.ts",
+              "projects/host-app/src/**/*.html"
+            ]
+          }
+        },
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
@@ -138,6 +147,15 @@
       "sourceRoot": "projects/mfe-app/src",
       "prefix": "app",
       "architect": {
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/host-app/src/**/*.ts",
+              "projects/host-app/src/**/*.html"
+            ]
+          }
+        },
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
