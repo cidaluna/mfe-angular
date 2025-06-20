@@ -9,6 +9,4 @@ describe('AuthService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(AuthService);
   });
-
-
 });

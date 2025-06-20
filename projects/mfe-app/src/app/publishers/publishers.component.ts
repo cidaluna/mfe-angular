@@ -40,11 +40,11 @@ import { ButtonComponent } from '../shared/button/button.component';
     MatTableModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [PublishersService],
   templateUrl: './publishers.component.html',
-  styleUrls: ['./publishers.component.scss']
+  styleUrls: ['./publishers.component.scss'],
 })
 export class PublishersComponent implements OnInit {
   publishers: Publisher[] = [];
@@ -71,7 +71,7 @@ export class PublishersComponent implements OnInit {
       id: [null],
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       isActive: [false],
-      isPartner: [false]
+      isPartner: [false],
     });
   }
 
@@ -123,7 +123,7 @@ export class PublishersComponent implements OnInit {
     this.dataSourcePublishers.filter = filterValue.trim().toLowerCase();
   }
 
-  backToBooks(){
+  backToBooks() {
     this._router.navigate(['books']);
   }
 }

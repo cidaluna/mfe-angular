@@ -1,6 +1,6 @@
 @use './../../styles/variables' as *;
 
-.container{
+.container {
   margin-top: 2rem;
 }
 
@@ -35,11 +35,10 @@
         margin-bottom: 10px;
       }
     }
-
   }
 }
 
-.alignItens{
+.alignItens {
   display: flex;
   justify-content: space-between;
   margin: 16px 0px;

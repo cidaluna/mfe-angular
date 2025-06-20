@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoreService {
-
   constructor(private readonly _snackBar: MatSnackBar) {}
 
   openSnackBar(message: string, action: string = 'ok') {

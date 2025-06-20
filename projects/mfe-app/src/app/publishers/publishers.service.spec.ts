@@ -10,7 +10,7 @@ describe('PublishersService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [PublishersService],
-      declarations: [PublishersComponent]
+      declarations: [PublishersComponent],
     });
     service = TestBed.inject(PublishersService);
     localStorage.clear(); // Limpa o LocalStorage antes de cada teste

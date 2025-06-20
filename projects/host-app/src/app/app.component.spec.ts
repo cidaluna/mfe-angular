@@ -8,12 +8,8 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -35,5 +31,4 @@ describe('AppComponent', () => {
     component.title = 'new-title';
     expect(component.title).toEqual('new-title');
   });
-
 });

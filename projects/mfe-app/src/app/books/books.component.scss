@@ -1,53 +1,50 @@
-@use "./../../styles/variables" as *;
+@use './../../styles/variables' as *;
 
-.container{
+.container {
   margin-top: 2rem;
 }
 
-.containerAdd{
+.containerAdd {
   display: flex;
   justify-content: space-between;
   margin-right: 0.8rem;
 }
 
-.bi{
+.bi {
   color: $mfe-color-white;
 }
 
-.endBtn, .endBtn button{
+.endBtn,
+.endBtn button {
   text-align: end;
 }
 
-p{
+p {
   font-size: 1.4rem;
   color: $mfe-color-primary;
 }
 
-span{
+span {
   font-size: 1.4rem;
   color: $mfe-color-secondary;
 }
 
-.custom-header{
+.custom-header {
   color: black;
   background-color: yellow;
 }
 
-.search-infos{
+.search-infos {
   width: 280px;
   max-width: 300px;
 }
 
 @media screen and (max-width: 600px) {
-  .container{
+  .container {
     margin-top: 0.8rem;
   }
 
-  p{
+  p {
     margin-bottom: 0px;
   }
 }
-
-
-
-

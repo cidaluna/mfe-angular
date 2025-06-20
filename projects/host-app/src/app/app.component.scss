@@ -1,32 +1,32 @@
-@use "variables" as *;
+@use 'variables' as *;
 
-.navbar{
+.navbar {
   background-color: $mfe-color-primary;
   color: $mfe-color-white;
   padding: 14px 30px;
   font-size: 1.75rem;
 }
 
-a{
+a {
   color: $mfe-color-white;
   font-size: 1.6rem;
   cursor: pointer;
 }
 
-.btn-outline-light{
+.btn-outline-light {
   color: $mfe-color-white;
   font-size: 1.6rem;
 }
 
-.btn-outline-light:hover{
+.btn-outline-light:hover {
   color: $mfe-color-primary;
 }
 
-.btn{
+.btn {
   margin-left: 16px;
 }
 
-.btn-lg{
+.btn-lg {
   margin-left: 2rem;
   padding: 0.6rem 1.5rem;
 }

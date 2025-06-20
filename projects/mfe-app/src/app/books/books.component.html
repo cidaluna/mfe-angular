@@ -4,13 +4,10 @@
   <div class="containerAdd">
     <div><span>Consultar editoras</span></div>
     <div>
-      <app-button
-        text="Abrir editoras"
-        icon="arrow_forward"
-        (clicked)="openPublishers()"
-      ></app-button>
+      <app-button text="Abrir editoras" icon="arrow_forward" (clicked)="openPublishers()"></app-button>
     </div>
-  </div><br>
+  </div>
+  <br />
 
   <div class="containerAdd">
     <div><p>Lista Livros</p></div>
@@ -25,62 +22,50 @@
     </div>
   </div>
 
-   <!-- Início da tabela com o Design do Angular Material -->
-   <div class="main-body">
+  <!-- Início da tabela com o Design do Angular Material -->
+  <div class="main-body">
     <mat-form-field class="search-infos">
       <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Poesia" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Poesia" #input />
     </mat-form-field>
-
 
     <div class="table-container" *ngIf="filteredData.length > 0; else noResults">
       <table mat-table [dataSource]="dataSource" matSort>
-
         <!-- ID Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Título</th>
-          <td mat-cell *matCellDef="let row"> {{row.title}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+          <td mat-cell *matCellDef="let row">{{ row.title }}</td>
         </ng-container>
 
         <ng-container matColumnDef="category">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </th>
-          <td mat-cell *matCellDef="let row"> {{row.category}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Categoria</th>
+          <td mat-cell *matCellDef="let row">{{ row.category }}</td>
         </ng-container>
 
         <ng-container matColumnDef="publisher">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Editora </th>
-          <td mat-cell *matCellDef="let row"> {{row.publisher}}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Editora</th>
+          <td mat-cell *matCellDef="let row">{{ row.publisher }}</td>
         </ng-container>
 
         <ng-container matColumnDef="startDate">
-          <th mat-header-cell *matHeaderCellDef> Data Publicação </th>
-          <td mat-cell *matCellDef="let row"> {{row.startDate | date: 'dd/MM/yyyy' }}</td>
+          <th mat-header-cell *matHeaderCellDef>Data Publicação</th>
+          <td mat-cell *matCellDef="let row">{{ row.startDate | date: 'dd/MM/yyyy' }}</td>
         </ng-container>
 
-
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
           <td mat-cell *matCellDef="let row">
             <div class="example-button-row">
               <div class="example-flex-container">
                 <div class="example-button-container">
-                  <app-button
-                    color="pink"
-                    text="Editar"
-                    icon="edit"
-                    (clicked)="openEditForm(row)"
-                  ></app-button>
+                  <app-button color="pink" text="Editar" icon="edit" (clicked)="openEditForm(row)"></app-button>
                   &nbsp;
-                  <app-button
-                    text="Excluir"
-                    icon="delete"
-                    (clicked)="deleteBookById(row.id)"
-                  ></app-button>
+                  <app-button text="Excluir" icon="delete" (clicked)="deleteBookById(row.id)"></app-button>
                 </div>
               </div>
             </div>
@@ -88,35 +73,29 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <mat-paginator [length]="filteredData.length"
+      <mat-paginator
+        [length]="filteredData.length"
         [pageSize]="pageSize"
         [pageSizeOptions]="[5, 25, 50, 100]"
         (page)="onPageChange($event)"
-        aria-label="Selecione pagina de livros">
+        aria-label="Selecione pagina de livros"
+      >
       </mat-paginator>
-      <br>
+      <br />
       <div>
-        <app-button
-          color="pink"
-          text="Exportar em CSV"
-          icon="check"
-          (clicked)="exportToCSV()"
-        ></app-button>
+        <app-button color="pink" text="Exportar em CSV" icon="check" (clicked)="exportToCSV()"></app-button>
       </div>
-      <br>
+      <br />
     </div>
 
     <!-- Caso não haja dados filtrados -->
     <ng-template #noResults>
-      <div class="no-data-message">
-        Nenhum dado encontrado.
-      </div>
+      <div class="no-data-message">Nenhum dado encontrado.</div>
     </ng-template>
-
   </div>
 
-   <!-- Fim da tabela-->
+  <!-- Fim da tabela-->
 </section>

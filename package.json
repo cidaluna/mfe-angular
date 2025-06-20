@@ -14,6 +14,8 @@
     "start:host": "ng serve host-app -o",
     "start:mfe": "ng serve mfe-app -o",
     "backend": "json-server --watch ./backend/db.json --port 4000 --host localhost",
+    "format:check": "prettier --check \"./projects/host-app/src/app/**/*.{ts,html,scss}\" \"./projects/mfe-app/src/app/**/*.{ts,html,scss}\"",
+    "format:fix": "prettier --write \"./projects/host-app/src/app/**/*.{ts,html,scss}\" \"./projects/mfe-app/src/app/**/*.{ts,html,scss}\"",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
@@ -57,6 +59,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ngx-build-plus": "^18.0.0",
+    "prettier": "^3.5.3",
     "typescript": "~5.5.2"
   }
 }

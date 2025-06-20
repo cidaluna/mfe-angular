@@ -7,7 +7,7 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    data: { name: 'home' }
+    data: { name: 'home' },
   },
   {
     path: 'login',
@@ -16,8 +16,8 @@ export const routes: Routes = [
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
         remoteName: 'mfeApp',
         exposedModule: './LoginComponent',
-      }).then(m => m.LoginComponent),
-      data: { name: 'login' }
+      }).then((m) => m.LoginComponent),
+    data: { name: 'login' },
   },
   {
     path: 'books',
@@ -26,8 +26,8 @@ export const routes: Routes = [
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
         remoteName: 'mfeApp',
         exposedModule: './BooksComponent',
-      }).then(m => m.BooksComponent),
-      data: { name: 'crud-books' }
+      }).then((m) => m.BooksComponent),
+    data: { name: 'crud-books' },
   },
   {
     path: 'publishers',
@@ -36,7 +36,7 @@ export const routes: Routes = [
         remoteEntry: 'http://localhost:4333/remoteEntry.js',
         remoteName: 'mfeApp',
         exposedModule: './PublishersComponent',
-      }).then(m => m.PublishersComponent),
-      data: { name: 'publishers' }
-  }
+      }).then((m) => m.PublishersComponent),
+    data: { name: 'publishers' },
+  },
 ];

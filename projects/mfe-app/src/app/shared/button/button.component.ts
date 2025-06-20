@@ -6,10 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule,MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ButtonComponent {
   @Input() color: 'blue' | 'pink' | 'green' | 'gray' = 'blue';

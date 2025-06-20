@@ -6,73 +6,55 @@
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Título</mat-label>
-        <input matInput type="text" placeholder="Título" formControlName="title">
-        @if (bookForm.get('title')?.hasError('required') && bookForm.get('title')?.touched){
-          <mat-error>
-            Título obrigatório
-          </mat-error>
+        <input matInput type="text" placeholder="Título" formControlName="title" />
+        @if (bookForm.get('title')?.hasError('required') && bookForm.get('title')?.touched) {
+          <mat-error> Título obrigatório </mat-error>
         }
 
         @if (bookForm.get('title')?.hasError('minlength') && bookForm.get('title')?.touched) {
-          <mat-error>
-            O título deve ter pelo menos 4 caracteres
-          </mat-error>
+          <mat-error> O título deve ter pelo menos 4 caracteres </mat-error>
         }
-
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Categoria</mat-label>
         <mat-select formControlName="category">
-           @for (val of category; track $index) {
-            @if(val){
-            <mat-option [value]="val">{{ val }}</mat-option>
+          @for (val of category; track $index) {
+            @if (val) {
+              <mat-option [value]="val">{{ val }}</mat-option>
             }
           }
         </mat-select>
         @if (bookForm.get('category')?.hasError('required') && bookForm.get('category')?.touched) {
-          <mat-error>
-            Categoria obrigatória
-          </mat-error>
+          <mat-error> Categoria obrigatória </mat-error>
         }
-
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Editora</mat-label>
-        <input matInput type="text" placeholder="Editora" formControlName="publisher">
+        <input matInput type="text" placeholder="Editora" formControlName="publisher" />
         @if (bookForm.get('publisher')?.hasError('required') && bookForm.get('publisher')?.touched) {
-          <mat-error class="custom-error">
-            Editora obrigatória
-          </mat-error>
+          <mat-error class="custom-error"> Editora obrigatória </mat-error>
         }
 
         @if (bookForm.get('publisher')?.hasError('minlength') && bookForm.get('publisher')?.touched) {
-          <mat-error>
-            O título deve ter pelo menos 4 caracteres
-          </mat-error>
+          <mat-error> O título deve ter pelo menos 4 caracteres </mat-error>
         }
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field appearance="outline">
         <mat-label>Data Publicação</mat-label>
-        <input matInput type="date" placeholder="Data Publicação" formControlName="startDate">
+        <input matInput type="date" placeholder="Data Publicação" formControlName="startDate" />
         @if (bookForm.get('startDate')?.hasError('required') && bookForm.get('startDate')?.touched) {
-          <mat-error class="custom-error">
-            Data obrigatória
-          </mat-error>
+          <mat-error class="custom-error"> Data obrigatória </mat-error>
         }
       </mat-form-field>
     </div>
     <div class="button-row">
-      <app-button
-        text="Cancelar"
-        class="btn-half"
-        [matDialogClose]="false"
-      ></app-button>
+      <app-button text="Cancelar" class="btn-half" [matDialogClose]="false"></app-button>
       <app-button
         color="pink"
         [text]="data ? 'Atualizar' : 'Salvar'"

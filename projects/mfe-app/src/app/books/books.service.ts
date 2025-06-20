@@ -4,33 +4,32 @@ import { Observable } from 'rxjs';
 import { Books } from '@mfe-app/app/books/books.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BooksService {
   private readonly API = 'http://localhost:4000/apibooks';
 
-  constructor(private readonly httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) {}
 
-  getAll(): Observable<Books[]>{
+  getAll(): Observable<Books[]> {
     // Para recuperar todos os livros utilizamos o método GET
     return this.httpClient.get<Books[]>(this.API);
   }
 
-  createBook(data: Books): Observable<Books>{
+  createBook(data: Books): Observable<Books> {
     // Para cadastrar utilizamos o método POST,
     // precisamos da URL da API Backend e dos dados do livro
     return this.httpClient.post<Books>(this.API, data);
   }
 
-  updateBook(id:number, data: Books):Observable<Books>{
+  updateBook(id: number, data: Books): Observable<Books> {
     // Para editar utilizamos o método PUT,
     // precisamos da URL da API e do id do livro que deseja alterar
     return this.httpClient.put<Books>(`${this.API}/${id}`, data);
   }
 
-  deleteBook(id: number):Observable<Books>{
+  deleteBook(id: number): Observable<Books> {
     // Para excluir utilizamos o método DELETE e o id que deseja exluir
     return this.httpClient.delete<Books>(`${this.API}/${id}`);
   }
-
 }

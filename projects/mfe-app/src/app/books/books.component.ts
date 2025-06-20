@@ -43,19 +43,18 @@ import { ButtonComponent } from '../shared/button/button.component';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [BooksService, CoreService],
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  styleUrls: ['./books.component.scss'],
 })
-export class BooksComponent implements OnInit, AfterViewInit{
+export class BooksComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'startDate', 'action']; // Colunas da tabela
 
-  displayedColumns: string[] = ['id', 'title', 'category', 'publisher', 'startDate', 'action'];  // Colunas da tabela
-
-  dataSource = new MatTableDataSource<Books>();  // MatTableDataSource tipado com Books
-  filteredData: Books[] = [];  // Dados filtrados
-  allBooks: Books[] = [];  // Todos os livros carregados da API
+  dataSource = new MatTableDataSource<Books>(); // MatTableDataSource tipado com Books
+  filteredData: Books[] = []; // Dados filtrados
+  allBooks: Books[] = []; // Todos os livros carregados da API
   pageSize!: number;
   totalRecords = 0;
   rows = 9;
@@ -74,7 +73,7 @@ export class BooksComponent implements OnInit, AfterViewInit{
     private readonly _bookService: BooksService,
     private readonly _coreService: CoreService,
     private readonly _router: Router
-  ) { }
+  ) {}
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -92,18 +91,18 @@ export class BooksComponent implements OnInit, AfterViewInit{
    */
   startListBooks() {
     this._bookService.getAll().subscribe({
-      next: (res: Books[]) => {  // Garantir que a resposta é um array de Books
-        this.allBooks = res;  // Armazenar todos os livros
-        this.filteredData = res;  // Inicializar os dados filtrados com todos os livros
-        this.dataSource = new MatTableDataSource<Books>(this.filteredData);  // Configurar o dataSource
+      next: (res: Books[]) => {
+        // Garantir que a resposta é um array de Books
+        this.allBooks = res; // Armazenar todos os livros
+        this.filteredData = res; // Inicializar os dados filtrados com todos os livros
+        this.dataSource = new MatTableDataSource<Books>(this.filteredData); // Configurar o dataSource
         this.updateDataSource();
-        console.log("Start List:", this.dataSource.data);
+        console.log('Start List:', this.dataSource.data);
       },
-      error: (err) =>{
+      error: (err) => {
         console.log(err);
       },
-      complete: () => {
-      }
+      complete: () => {},
     });
   }
 
@@ -123,7 +122,6 @@ export class BooksComponent implements OnInit, AfterViewInit{
     });
   }
 
-
   /**
    *  Recupera o que o usuário digitou no filtro e
    *  Utiliza a propriedade filter para ver se existe o dado na tabela
@@ -133,10 +131,11 @@ export class BooksComponent implements OnInit, AfterViewInit{
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
 
     // Filtra os livros armazenados (todos) conforme o termo de pesquisa
-    this.filteredData = this.allBooks.filter(item =>
-      item.title.toLowerCase().includes(filterValue) ||
-      item.category.toLowerCase().includes(filterValue) ||
-      item.publisher.toLowerCase().includes(filterValue)
+    this.filteredData = this.allBooks.filter(
+      (item) =>
+        item.title.toLowerCase().includes(filterValue) ||
+        item.category.toLowerCase().includes(filterValue) ||
+        item.publisher.toLowerCase().includes(filterValue)
     );
 
     this.updateDataSource();
@@ -149,24 +148,22 @@ export class BooksComponent implements OnInit, AfterViewInit{
     this.dataSource.data = this.filteredData.slice(this.first, this.first + this.rows);
   }
 
-
   /**
    * Faz a exclusão de um livro, dispara o snackBar
    * de acordo com o id informado
    * e chama a listagem de livros
-  */
+   */
   deleteBookById(id: number) {
     this._bookService.deleteBook(id).subscribe({
       next: (res) => {
         this._coreService.openSnackBar('Livro excluído!', 'fechar');
         this.startListBooks();
       },
-      error: (err) =>{
+      error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
-
 
   /**
    * Abre o Dialog Form Livros com os dados carregados (data)
@@ -187,17 +184,17 @@ export class BooksComponent implements OnInit, AfterViewInit{
     });
   }
 
-  openPublishers(){
+  openPublishers() {
     this._router.navigate(['publishers']);
   }
 
-  updateDataSource(){
+  updateDataSource() {
     const pageSize = this.paginator.pageSize;
     const pageIndex = this.paginator.pageIndex;
     const paginatedBooks = this.filteredData.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
-    console.log('Items per page:',pageSize);
-    console.log('Page Index:',pageIndex);
-    console.log('paginatedBooks:',paginatedBooks);
+    console.log('Items per page:', pageSize);
+    console.log('Page Index:', pageIndex);
+    console.log('paginatedBooks:', paginatedBooks);
     this.dataSource = new MatTableDataSource(paginatedBooks);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -206,36 +203,37 @@ export class BooksComponent implements OnInit, AfterViewInit{
 
   // Método que é chamado sempre que o usuário muda a página ou o número de itens por página
   onPageChange(event: any) {
-    console.log("Chamou onPageChange");
+    console.log('Chamou onPageChange');
     this.startListBooks(); // Atualiza os dados conforme o novo tamanho da página
   }
 
   exportToCSV() {
-      // Acessa os dados da MatTableDataSource
-  const data = this.dataSource.data; // A instância de MatTableDataSource, onde estão os dados
+    // Acessa os dados da MatTableDataSource
+    const data = this.dataSource.data; // A instância de MatTableDataSource, onde estão os dados
 
-  // Filtra a coluna de "ações" se estiver em displayedColumns
-  const columnsWithoutActions = this.displayedColumns.filter(col => col !== 'action'); // 'ações' é o nome da coluna de ações
+    // Filtra a coluna de "ações" se estiver em displayedColumns
+    const columnsWithoutActions = this.displayedColumns.filter((col) => col !== 'action'); // 'ações' é o nome da coluna de ações
 
-  // Converte os dados para CSV
-  const header = columnsWithoutActions.join(';');  // Cabeçalho separado por ponto e vírgula
+    // Converte os dados para CSV
+    const header = columnsWithoutActions.join(';'); // Cabeçalho separado por ponto e vírgula
 
-  // Mapeia os dados para gerar as linhas do CSV, excluindo a coluna de ações
-  const rows = data.map(item =>
-    columnsWithoutActions.map(col => item[col as keyof Books]).join(';')  // Junta os valores das colunas com ponto e vírgula
-  ).join('\n');  // Junta todas as linhas com quebras de linha
+    // Mapeia os dados para gerar as linhas do CSV, excluindo a coluna de ações
+    const rows = data
+      .map(
+        (item) => columnsWithoutActions.map((col) => item[col as keyof Books]).join(';') // Junta os valores das colunas com ponto e vírgula
+      )
+      .join('\n'); // Junta todas as linhas com quebras de linha
 
-  // Concatena o cabeçalho e as linhas para formar o conteúdo completo do CSV
-  const csvContent = header + '\n' + rows;
+    // Concatena o cabeçalho e as linhas para formar o conteúdo completo do CSV
+    const csvContent = header + '\n' + rows;
 
-  // Adiciona o BOM para garantir a codificação correta no arquivo
-  const bom = '\uFEFF';
+    // Adiciona o BOM para garantir a codificação correta no arquivo
+    const bom = '\uFEFF';
 
-  // Cria um Blob com o conteúdo CSV, incluindo o BOM, e especifica o tipo de arquivo como UTF-8
-  const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
+    // Cria um Blob com o conteúdo CSV, incluindo o BOM, e especifica o tipo de arquivo como UTF-8
+    const blob = new Blob([bom + csvContent], { type: 'text/csv;charset=utf-8;' });
 
-  // Inicia o download do arquivo CSV com o nome 'tabela-dados.csv'
-  saveAs(blob, 'tabela-dados.csv');
+    // Inicia o download do arquivo CSV com o nome 'tabela-dados.csv'
+    saveAs(blob, 'tabela-dados.csv');
   }
-
 }

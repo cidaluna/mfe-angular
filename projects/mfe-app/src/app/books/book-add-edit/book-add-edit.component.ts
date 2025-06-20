@@ -25,22 +25,16 @@ import { ButtonComponent } from '../../shared/button/button.component';
     MatDialogModule,
     MatButtonModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ],
   templateUrl: './book-add-edit.component.html',
-  styleUrls: ['./book-add-edit.component.scss']
+  styleUrls: ['./book-add-edit.component.scss'],
 })
-export class BookAddEditComponent implements OnInit{
-
+export class BookAddEditComponent implements OnInit {
   bookForm!: FormGroup;
   isSubmitting: boolean = false; // Variável para controlar o estado do botão
 
-  category: string[] = [
-    'AutoAjuda',
-    'Infantil',
-    'Didático',
-    'Poesia',
-  ];
+  category: string[] = ['AutoAjuda', 'Infantil', 'Didático', 'Poesia'];
 
   constructor(
     private readonly _fb: FormBuilder,
@@ -62,7 +56,6 @@ export class BookAddEditComponent implements OnInit{
     this.bookForm.patchValue(this.data);
   }
 
-
   /**
    * Se existir dado carregado no Form utiliza o atualizar livro
    * Se não existir utiliza o service adicionar livro exibindo as msgs com snackBar
@@ -71,19 +64,17 @@ export class BookAddEditComponent implements OnInit{
     if (this.bookForm.valid) {
       this.isSubmitting = true;
       if (this.data) {
-        this._bookService
-          .updateBook(this.data.id, this.bookForm.value)
-          .subscribe({
-            next: (val: any) => {
-              this._coreService.openSnackBar('Livro atualizado com sucesso!');
-              this._dialogRef.close(true);
-              this.isSubmitting = false;
-            },
-            error: (err: any) => {
-              console.error(err);
-              this.isSubmitting = false;
-            },
-          });
+        this._bookService.updateBook(this.data.id, this.bookForm.value).subscribe({
+          next: (val: any) => {
+            this._coreService.openSnackBar('Livro atualizado com sucesso!');
+            this._dialogRef.close(true);
+            this.isSubmitting = false;
+          },
+          error: (err: any) => {
+            console.error(err);
+            this.isSubmitting = false;
+          },
+        });
       } else {
         // Criação de um novo livro
         this._bookService.getAll().subscribe((books: Books[]) => {
@@ -108,9 +99,7 @@ export class BookAddEditComponent implements OnInit{
 
   private generateId(books: Books[]): number {
     // Mapeia os IDs e filtra apenas números válidos
-    const ids = books
-      .map(book => book.id)
-      .filter((id): id is number => typeof id === 'number' && !isNaN(id)); // Filtra para garantir que seja um número
+    const ids = books.map((book) => book.id).filter((id): id is number => typeof id === 'number' && !isNaN(id)); // Filtra para garantir que seja um número
 
     // Encontra o maior ID e começa a partir dele
     let newId = (ids.length > 0 ? Math.max(...ids) : 0) + 1;

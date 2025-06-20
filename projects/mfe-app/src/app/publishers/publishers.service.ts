@@ -3,10 +3,9 @@ import { Injectable } from '@angular/core';
 import { Publisher } from '@mfe-app/app/publishers/publisher.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PublishersService {
-
   private readonly localStorageKey = 'publishers';
 
   constructor() {}
@@ -17,7 +16,7 @@ export class PublishersService {
   }
 
   addPublisher(publisher: Publisher): void {
-    console.log("Entrou service add com: ", publisher);
+    console.log('Entrou service add com: ', publisher);
     const publishers = this.getPublishersAll();
     publisher.id = new Date().getTime(); // Usando timestamp para garantir ID único
     publishers.push(publisher);
@@ -25,18 +24,18 @@ export class PublishersService {
   }
 
   updatePublisher(updatedPublisher: Publisher): void {
-    console.log("Entrou service editar com: ", updatedPublisher);
+    console.log('Entrou service editar com: ', updatedPublisher);
     const pub = this.getPublishersAll();
-    const index = pub.findIndex(p => p.id === updatedPublisher.id);
-      if (index > -1) {
-        pub[index] = updatedPublisher;
-        this.updateLocalStorage(pub);
-      }
+    const index = pub.findIndex((p) => p.id === updatedPublisher.id);
+    if (index > -1) {
+      pub[index] = updatedPublisher;
+      this.updateLocalStorage(pub);
+    }
   }
 
   deletePublisher(id: number): void {
-    let publishers = this.getPublishersAll()
-    publishers = publishers.filter(p => p.id !== id);
+    let publishers = this.getPublishersAll();
+    publishers = publishers.filter((p) => p.id !== id);
     this.updateLocalStorage(publishers);
   }
 
