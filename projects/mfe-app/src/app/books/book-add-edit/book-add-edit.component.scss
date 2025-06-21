@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as *;
 
 .custom-error {
-  color: rgb(206, 117, 0);
+  color: #ce7500;
 }
 
 .content {
@@ -24,7 +24,8 @@ p {
 }
 
 .action {
-  padding: 0px 25px 20px;
+  padding: 0 25px 20px;
+
   button {
     flex: 1;
   }
@@ -47,6 +48,7 @@ p {
     padding: 1rem;
     width: 300px;
   }
+
   .row {
     display: flex;
     padding: 0.7rem;

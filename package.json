@@ -17,6 +17,9 @@
     "format:check": "prettier --check \"./projects/host-app/src/app/**/*.{ts,html,scss}\" \"./projects/mfe-app/src/app/**/*.{ts,html,scss}\"",
     "format:fix": "prettier --write \"./projects/host-app/src/app/**/*.{ts,html,scss}\" \"./projects/mfe-app/src/app/**/*.{ts,html,scss}\"",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "stylelint:host": "stylelint \"projects/host-app/src/app/**/*.scss\" --config stylelint.config.cjs ",
+    "stylelint:mfe": "stylelint \"projects/mfe-app/src/app/**/*.scss\" --config stylelint.config.cjs ",
+    "stylelint:fix": "stylelint \"projects/{host-app,mfe-app}/src/app/**/*.{css,scss}\" --fix",
     "lint:host": "eslint \"./projects/host-app/src/app/**/*.ts\" ",
     "lint:mfe": "eslint \"./projects/mfe-app/src/app/**/*.ts\" ",
     "lint:fix": "eslint \"./projects/host-app/src/app/**/*.ts\" \"./projects/mfe-app/src/app/**/*.ts\" --fix"
@@ -71,6 +74,10 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ngx-build-plus": "^18.0.0",
     "prettier": "^3.5.3",
+    "stylelint": "^15.10.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-scss": "^5.0.0",
     "typescript": "~5.5.2"
   }
 }
