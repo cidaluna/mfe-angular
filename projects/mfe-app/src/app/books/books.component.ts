@@ -22,12 +22,14 @@ import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonComponent } from '../shared/button/button.component';
+import { BlueHighlightDirective } from '../shared/directives/blue-highlight/blue-highlight.directive';
 
 @Component({
   selector: 'app-books',
   standalone: true,
   imports: [
     CommonModule,
+    BlueHighlightDirective,
     ButtonComponent,
     HttpClientModule,
     FormsModule,

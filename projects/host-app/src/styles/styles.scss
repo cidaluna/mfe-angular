@@ -1,5 +1,11 @@
 @use "variables" as *;
 
+// para a diretiva blue highlight pegar o estilo no host-app quando rodar o mfe-app
+:root {
+  --host-blue-highlight: #3f51b5;
+}
+
+
 *{
   margin: 0;
   padding: 0;

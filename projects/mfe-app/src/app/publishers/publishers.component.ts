@@ -2,14 +2,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 // MfeApp
 import { CoreService } from '@mfe-app/app/core/core.service';
 import { Publisher } from '@mfe-app/app/publishers/publisher.interface';
 import { PublishersService } from '@mfe-app/app/publishers/publishers.service';
 // Angular Material
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -18,15 +17,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ButtonComponent } from '../shared/button/button.component';
+import { BlueHighlightDirective } from '../shared/directives/blue-highlight/blue-highlight.directive';
 @Component({
   selector: 'app-publishers',
   standalone: true,
   imports: [
     CommonModule,
+    BlueHighlightDirective,
     ButtonComponent,
     FormsModule,
     ReactiveFormsModule,
